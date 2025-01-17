@@ -44,7 +44,7 @@ const navigation = [
 
   <div class="items-center gap-6 hidden md:flex">
     {
-      navigation.map((nav) => (
+      navigation.map(nav => (
         <a href={nav.url} class="text-sm font-bold hover:text-primary transition" target="_blank">
           {nav.name}
         </a>
@@ -55,7 +55,7 @@ const navigation = [
   <div class="flex items-center gap-4">
     <div class="flex items-center gap-4">
       {
-        socials.map((social) => (
+        socials.map(social => (
           <a href={social.url} target="_blank" rel="noopener noreferrer" class=" hover:text-primary transition" aria-label={social.name}>
             <div class={cn('size-5', social.icon)} />
           </a>
