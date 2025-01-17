@@ -1,0 +1,75 @@
+---
+import { cn } from '../utils/cn';
+
+const socials = [
+  {
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/papra.app',
+    icon: 'i-tabler-brand-bluesky',
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/papra-hq/papra',
+    icon: 'i-tabler-brand-github',
+  },
+];
+
+const navigation = [
+  {
+    name: 'Demo',
+    url: 'https://demo.papra.app',
+  },
+  {
+    name: 'Docs',
+    url: 'https://docs.papra.app',
+  },
+  {
+    name: 'Self-host',
+    url: 'https://docs.papra.app/self-hosting/using-docker/',
+  },
+  {
+    name: 'Roadmap',
+    url: 'https://github.com/orgs/papra-hq/projects/2',
+  },
+];
+---
+
+<nav
+  class="z-60 border-0 border-b md:max-w-4xl pl-4 pr-3 py-4 mx-auto flex items-center justify-between md:(py-2 border-1px rounded-full mt-4) fixed top-0 left-0 right-0 z-50 bg-background bg-op-40 backdrop-blur-md"
+>
+  <a href="/" class="text-lg font-bold flex items-center group">
+    <div class="i-tabler-file-text size-6 group-hover:(text-primary rotate-25deg) transition transform rotate-12deg"></div>
+    <span class="ml-2">Papra</span>
+  </a>
+
+  <div class="items-center gap-6 hidden md:flex">
+    {
+      navigation.map((nav) => (
+        <a href={nav.url} class="text-sm font-bold hover:text-primary transition" target="_blank">
+          {nav.name}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4">
+      {
+        socials.map((social) => (
+          <a href={social.url} target="_blank" rel="noopener noreferrer" class=" hover:text-primary transition" aria-label={social.name}>
+            <div class={cn('size-5', social.icon)} />
+          </a>
+        ))
+      }
+    </div>
+
+    <a
+      class="flex gap-1.5 items-center bg-primary font-bold rounded py-1.5 px-3 rounded-xl text-primary-foreground text-xs transition hover:bg-primary/80"
+      href="https://dashboard.papra.app/register"
+      target="_blank"
+    >
+      Private Beta
+      <div class="i-tabler-arrow-right size-4"></div>
+    </a>
+  </div>
+</nav>

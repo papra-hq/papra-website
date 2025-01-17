@@ -1,0 +1,117 @@
+---
+import { cn } from '../utils/cn';
+
+const socials = [
+  {
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/papra.app',
+    icon: 'i-tabler-brand-bluesky',
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/papra-hq/papra',
+    icon: 'i-tabler-brand-github',
+  },
+];
+
+const sections: {
+  title: string;
+  links: { label: string; url: string; target?: string; rel?: string }[];
+}[] = [
+  {
+    title: 'Papra',
+    links: [
+      {
+        label: 'Demo app',
+        url: 'https://demo.papra.app',
+      },
+      {
+        label: 'Documentation',
+        url: 'https://docs.papra.app',
+      },
+      {
+        label: 'Self-host',
+        url: 'https://docs.papra.app/self-hosting/using-docker/',
+      },
+      {
+        label: 'Roadmap',
+        url: 'https://github.com/orgs/papra-hq/projects/2',
+      },
+    ],
+  },
+  {
+    title: 'Open Source',
+    links: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/papra-hq/papra',
+      },
+      {
+        label: 'Contributing',
+        url: 'https://github.com/papra-hq/papra/blob/main/CONTRIBUTING.md',
+      },
+      {
+        label: 'Code of Conduct',
+        url: 'https://github.com/papra-hq/papra/blob/main/CODE_OF_CONDUCT.md',
+      },
+      {
+        label: 'License',
+        url: 'https://github.com/papra-hq/papra/blob/main/LICENSE',
+      },
+      {
+        label: 'This website',
+        url: 'https://github.com/papra-hq/papra-website',
+      },
+    ],
+  },
+];
+---
+
+<footer class="bg-card border-t border-border py-8 text-muted-foreground">
+  <div class="max-w-1000px mx-auto p-4">
+    <div class="flex justify-between flex-col md:flex-row gap-10">
+      <div>
+        <a href="/" class="text-xl font-bold flex items-center group mb-2">
+          <div class="i-tabler-file-text size-7 text-primary group-hover:(rotate-25deg) transition transform rotate-12deg"></div>
+          <span class="ml-2 text-foreground group-hover:text-foreground/80 transition">Papra</span>
+        </a>
+
+        <div class="flex gap-2">
+          {
+            socials.map(social => (
+              <a href={social.url} class="hover:text-primary transition" target="_blank" rel="noopener noreferrer">
+                <div class={`${social.icon} text-2xl`} aria-hidden="true" />
+              </a>
+            ))
+          }
+        </div>
+
+        <p class="mt-4 text-sm max-w-250px">
+          Papra is made and hosted in Europe with <span class="i-tabler-heart-filled size-3.5 mb--0.3 text-primary inline-block" aria-label="love"></span>
+          by <a href="https://corentin.tech" class="text-primary hover:text-primary/80 transition">Corentin Thomasset</a>.
+        </p>
+      </div>
+
+      <div class={cn('grid gap-10 grid-cols-1', `sm:grid-cols-${sections.length}`)}>
+        {
+          sections.map(section => (
+            <div>
+              <div class="text-foreground font-semibold">{section.title}</div>
+              <div class="mt-2">
+                {section.links.map(link => (
+                  <a href={link.url} class="block hover:text-primary transition py-0.75 font-medium" target={link.target} rel={link.rel}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-border pt-4">
+      © {new Date().getFullYear()} Papra. All rights reserved.
+    </div>
+  </div>
+</footer>
