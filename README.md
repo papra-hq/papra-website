@@ -14,7 +14,7 @@
 </p>
 
 > [!TIP]
-> If you are looking for the source code of the Papra app, you can find it [papra-hq/papra](https://github.com/papra-hq/papra).
+> If you are looking for the source code of the Papra app, you can find it here: [papra-hq/papra](https://github.com/papra-hq/papra).
 
 ## Development
 
