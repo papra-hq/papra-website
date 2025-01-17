@@ -79,7 +79,7 @@ const sections: {
         <div class="flex gap-2">
           {
             socials.map(social => (
-              <a href={social.url} class="hover:text-primary transition" target="_blank" rel="noopener noreferrer">
+              <a href={social.url} class="hover:text-primary transition" target="_blank" rel="noopener noreferrer" aria-label={social.name}>
                 <div class={`${social.icon} text-2xl`} aria-hidden="true" />
               </a>
             ))
@@ -87,8 +87,8 @@ const sections: {
         </div>
 
         <p class="mt-4 text-sm max-w-250px">
-          Papra is made and hosted in Europe with <span class="i-tabler-heart-filled size-3.5 mb--0.3 text-primary inline-block" aria-label="love"></span>
-          by <a href="https://corentin.tech" class="text-primary hover:text-primary/80 transition">Corentin Thomasset</a>.
+          Papra is made and hosted in Europe with <span class="i-tabler-heart-filled size-3.5 mb--0.3 text-primary inline-block"></span>
+          by <a href="https://corentin.tech" class="text-primary  border-b hover:border-b-primary transition">Corentin Thomasset</a>.
         </p>
       </div>
 
