@@ -12,12 +12,32 @@ const socials = [
     url: 'https://github.com/papra-hq/papra',
     icon: 'i-tabler-brand-github',
   },
+  {
+    name: 'Discord',
+    url: 'https://discord.gg/8UPjzsrBNF',
+    icon: 'i-tabler-brand-discord',
+  },
 ];
 
 const sections: {
   title: string;
   links: { label: string; url: string; target?: string; rel?: string }[];
 }[] = [
+  {
+    title: 'Community',
+    links: [
+      ...socials
+        .filter(social => social.name !== 'GitHub')
+        .map(social => ({
+          label: social.name,
+          url: social.url,
+        })),
+      {
+        label: 'GitHub',
+        url: 'https://github.com/papra-hq',
+      },
+    ],
+  },
   {
     title: 'Papra',
     links: [
@@ -39,6 +59,7 @@ const sections: {
       },
     ],
   },
+
   {
     title: 'Open Source',
     links: [
@@ -88,7 +109,7 @@ const sections: {
 
         <p class="mt-4 text-sm max-w-250px">
           Papra is made and hosted in Europe with <span class="i-tabler-heart-filled size-3.5 mb--0.3 text-primary inline-block"></span>
-          by <a href="https://corentin.tech" class="text-primary  border-b hover:border-b-primary transition">Corentin Thomasset</a>.
+          by <a href="https://corentin.tech" class="text-primary border-b hover:border-b-primary transition">Corentin Thomasset</a>.
         </p>
       </div>
 
