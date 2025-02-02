@@ -102,4 +102,34 @@ export default defineConfig({
     },
   },
   safelist: ['sm:grid-cols-1', 'sm:grid-cols-2', 'sm:grid-cols-3', 'sm:grid-cols-4'],
+  preflights: [
+    {
+      getCSS: () => `
+      @keyframes slideRight {
+        0% {left: -12px;}
+        50% {left: calc(100% + 12px);}
+        100% {left: calc(100% + 12px);}
+      }
+      @keyframes slideDown {
+        0% {top: -12px;}
+        50% {top: calc(100% + 12px);}
+        100% {top: calc(100% + 12px);}
+      }
+    `,
+    },
+  ],
+  rules: [
+    [
+      'animate-slideRight',
+      {
+        'animation-name': 'slideRight',
+      },
+    ],
+    [
+      'animate-slideDown',
+      {
+        'animation-name': 'slideDown',
+      },
+    ],
+  ],
 });

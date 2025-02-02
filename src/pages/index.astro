@@ -1,8 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Hero from '../assets/papra-screenshot.png';
-import EarlyAccess from '../components/EarlyAccess.astro';
-
+import FeaturesBento from '../components/FeaturesBento.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
@@ -38,7 +37,37 @@ import '../styles/app.css';
     <Image src={Hero} alt="Papra Screenshot" class="mx-auto max-w-1000px w-full relative z-50 mt--300px" />
   </div>
 
-  <EarlyAccess />
+  <FeaturesBento />
+
+  <div class=" py-32 relative overflow-hidden border-y">
+    <div class="z-10 bg-primary size-64 rounded-full blur-84 op-20 transform translate-x--80% translate-y--33% absolute"></div>
+    <div class="z-10 bg-primary size-128 rounded-full blur-84 op-20 transform translate-x-80% translate-y-33% absolute right-0"></div>
+
+    <div class="max-w-800px mx-auto p-6">
+      <div class="text-center">
+        <p class="text-3xl font-bold text-pretty">"With Papra, we've streamlined our document management process."</p>
+        <div class="text-lg mt-4">- Ada, FICSIT Inc.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="bg-card py-32">
+  <div class="max-w-1200px mx-auto px-6">
+    <div class="border rounded-xl bg-background pt-32 pb-24 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] px-6">
+      <h2 class="text-2xl sm:text-4xl font-bold text-center max-w-650px mx-auto">
+        Trusted by home, startups, and enterprises of all sizes.
+      </h2>
+
+      <div class="flex mt-4 items-center justify-center">
+        <a href="https://dashboard.papra.app/register" class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
+          Get started
+
+          <div class="i-tabler-arrow-right ml-2" aria-hidden="true"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
   <Footer />
 </Layout>
