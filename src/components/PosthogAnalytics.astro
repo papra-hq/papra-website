@@ -1,5 +1,5 @@
 ---
-const isEnabled= import.meta.env.POSTHOG_ENABLED === 'true';
+const isEnabled= import.meta.env.POSTHOG_ENABLED === 'true' || import.meta.env.POSTHOG_ENABLED === true;
 const apiKey: string | undefined = import.meta.env.POSTHOG_API_KEY;
 ---
 { isEnabled && (
