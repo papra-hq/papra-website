@@ -7,6 +7,10 @@ export default antfu({
     semi: true,
   },
 
+  ignores: [
+    'src/components/PosthogAnalytics.astro', // Inlined script
+  ],
+
   rules: {
     // To allow export on top of files
     'ts/no-use-before-define': ['error', { allowNamedExports: true, functions: false }],
