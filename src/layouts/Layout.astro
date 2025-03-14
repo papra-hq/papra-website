@@ -1,5 +1,7 @@
 ---
+import CookieConsentBanner from '../components/CookieConsentBanner.astro';
 import PosthogAnalytics from '../components/PosthogAnalytics.astro';
+import { config } from '../config';
 
 const appName = 'Papra';
 const shortDescription = 'Your Open-Source Solution to Document Chaos';
@@ -51,5 +53,7 @@ const ogImageHeight = '630';
   </head>
   <body class="bg-background font-sans antialiased min-h-screen text-foreground text-sm" data-kb-theme="dark">
     <slot />
+
+    { config.posthog.isEnabled && <CookieConsentBanner /> }
   </body>
 </html>
