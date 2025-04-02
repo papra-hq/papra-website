@@ -4,6 +4,7 @@ import Hero from '../assets/papra-screenshot.png';
 import FeaturesBento from '../components/FeaturesBento.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { requestEarlyAccessLink } from '../config';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -22,10 +23,10 @@ import Layout from '../layouts/Layout.astro';
         <a href="https://demo.papra.app" class="border text-sm font-bold rounded py-2 px-4 rounded-xl hover:border-primary hover:text-primary transition" target="_blank"> Live Demo </a>
 
         <a
-          href="https://dashboard.papra.app/register"
+          href={requestEarlyAccessLink}
           class="text-sm flex items-center gap-1.5 bg-primary hover:bg-primary/80 font-bold rounded py-2 px-4 rounded-xl text-primary-foreground transition"
         >
-          Private Beta
+          Join the private beta
           <div class="i-tabler-arrow-right size-5"></div>
         </a>
       </div>
@@ -58,10 +59,10 @@ import Layout from '../layouts/Layout.astro';
       </h2>
 
       <div class="flex mt-4 items-center justify-center">
-        <a href="https://dashboard.papra.app/register" class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
-          Get started
+        <a href={requestEarlyAccessLink} class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
+          Join the private beta
 
-          <div class="i-tabler-arrow-right ml-2" aria-hidden="true"></div>
+          <div class="i-tabler-arrow-right ml-2 size-5" aria-hidden="true"></div>
         </a>
       </div>
     </div>
