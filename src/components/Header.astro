@@ -1,5 +1,5 @@
 ---
-import { requestEarlyAccessLink } from '../config';
+import { config } from '../config';
 import { cn } from '../utils/cn';
 
 const socials = [
@@ -15,7 +15,7 @@ const socials = [
   },
   {
     name: 'Discord',
-    url: 'https://discord.gg/8UPjzsrBNF',
+    url: '/discord',
     icon: 'i-tabler-brand-discord',
   },
 ];
@@ -71,7 +71,7 @@ const navigation = [
 
     <a
       class="flex gap-1.5 items-center bg-primary font-bold rounded py-1.5 px-3 rounded-xl text-primary-foreground text-xs transition hover:bg-primary/80"
-      href={requestEarlyAccessLink}
+      href={config.requestEarlyAccessLink}
       target="_blank"
     >
       Private Beta

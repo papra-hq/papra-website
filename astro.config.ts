@@ -2,6 +2,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 import UnoCSS from 'unocss/astro';
+import { config } from './src/config';
 
 export default defineConfig({
   site: 'https://papra.app',
@@ -9,4 +10,7 @@ export default defineConfig({
     UnoCSS({ injectReset: true }),
     sitemap(),
   ],
+  redirects: {
+    '/discord': { status: 302, destination: config.discordInvite },
+  },
 });
