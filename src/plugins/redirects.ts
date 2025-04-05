@@ -2,9 +2,9 @@ import type { AstroConfig, AstroIntegration } from 'astro';
 import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-function buildRedirects({ config }: { config?: AstroConfig }) {
-  const redirects = config?.redirects;
+type Redirects = AstroConfig['redirects'];
 
+function buildRedirects({ redirects }: { redirects?: Redirects }) {
   if (!redirects) {
     return;
   }
@@ -22,8 +22,10 @@ function buildRedirects({ config }: { config?: AstroConfig }) {
 
 export default function createRedirectsFile({
   fileName = '_redirects',
+  redirects = {},
 }: {
   fileName?: string;
+  redirects?: Redirects;
 } = {}): AstroIntegration {
   let config: AstroConfig;
 
@@ -35,7 +37,7 @@ export default function createRedirectsFile({
       },
       'astro:build:done': async ({ dir, logger }) => {
         const filePath = fileURLToPath(new URL(fileName, dir));
-        const fileContent = buildRedirects({ config });
+        const fileContent = buildRedirects({ redirects: redirects ?? config?.redirects });
 
         if (!fileContent) {
           return;

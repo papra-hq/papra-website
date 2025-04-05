@@ -10,9 +10,10 @@ export default defineConfig({
   integrations: [
     UnoCSS({ injectReset: true }),
     sitemap(),
-    createRedirectsFile(),
+    createRedirectsFile({
+      redirects: {
+        '/discord': { status: 302, destination: config.discordInvite },
+      },
+    }),
   ],
-  redirects: {
-    '/discord': { status: 302, destination: config.discordInvite },
-  },
 });
