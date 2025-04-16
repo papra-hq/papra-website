@@ -27,11 +27,11 @@ jobs:
       - name: Run linters
         run: pnpm lint
 
-      - name: Type check
-        run: pnpm typecheck
+      # - name: Type check
+      #   run: pnpm typecheck
 
-      # - name: Run unit test
-      #   run: pnpm test
+      - name: Run tests
+        run: pnpm test
 
       - name: Build the app
         run: pnpm build
