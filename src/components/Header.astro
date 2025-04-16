@@ -1,5 +1,5 @@
 ---
-import { config } from '../config';
+import { config } from '../app.config';
 import { cn } from '../utils/cn';
 
 const socials = [
@@ -30,6 +30,10 @@ const navigation = [
     url: 'https://docs.papra.app',
   },
   {
+    name: 'Blog',
+    url: '/blog',
+  },
+  {
     name: 'Self-host',
     url: 'https://docs.papra.app/self-hosting/using-docker/',
   },
@@ -51,7 +55,7 @@ const navigation = [
   <div class="items-center gap-6 hidden md:flex">
     {
       navigation.map(nav => (
-        <a href={nav.url} class="text-sm font-bold hover:text-primary transition" target="_blank">
+        <a href={nav.url} class="text-sm font-bold hover:text-primary transition" {...(nav.url.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>
           {nav.name}
         </a>
       ))

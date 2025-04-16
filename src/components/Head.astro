@@ -1,0 +1,100 @@
+---
+import { formatCanonicalUrl } from '../utils/urls';
+import PosthogAnalytics from './PosthogAnalytics.astro';
+
+export type Props = {
+  title?: string;
+  rawTitle?: string;
+  description?: string;
+  image?: { src: string; alt: string };
+  canonicalUrl?: URL | null;
+  pageType?: 'website' | 'article';
+  locale?: string;
+};
+
+const siteInfo = {
+  name: 'Papra',
+  description: 'Your Open-Source Solution to Document Chaos',
+  image: { src: '/og/papra.png', alt: 'Papra - Your Open-Source Solution to Document Chaos' },
+  author: 'Corentin Thomasset',
+};
+
+const { rawTitle, description = siteInfo.description, image = siteInfo.image, canonicalUrl: rawCanonicalUrl, pageType = 'website', locale = 'en' } = Astro.props;
+const canonicalUrl = formatCanonicalUrl(rawCanonicalUrl ?? new URL(Astro.request.url, Astro.site));
+
+const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(' | ');
+const resolvedImage = {
+  src: new URL(image.src, Astro.site).toString(),
+  alt: image.alt,
+};
+
+const og = {
+    name: siteInfo.name,
+    title,
+    description,
+    image: resolvedImage,
+    canonicalUrl,
+    locale,
+    type: pageType,
+};
+
+const twitter = {
+    name: siteInfo.name,
+    title,
+    description,
+    image: resolvedImage,
+    canonicalUrl,
+    locale,
+    creator: '@cthmsst',
+    card: 'summary_large_image',
+};
+
+---
+
+<!-- High Priority Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>{title}</title>
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#dbfd85" />
+
+<meta name="description" content={description} />
+<meta name="author" content={siteInfo.author} />
+
+
+
+<!-- Low Priority Global Metadata -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="author" href="humans.txt" />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={og.title} />
+<meta property="og:type" content={og.type} />
+<meta property="og:url" content={og.canonicalUrl} />
+<meta property="og:locale" content={og.locale} />
+<meta property="og:description" content={og.description} />
+<meta property="og:site_name" content={og.name} />
+<meta property="og:image" content={og.image.src} />
+<meta property="og:image:alt" content={og.image.alt} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content={twitter.card} />
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+<meta name="twitter:image" content={twitter.image.src} />
+<meta name="twitter:image:alt" content={twitter.image.alt} />
+<meta name="twitter:site" content={twitter.creator} />
+<meta name="twitter:creator" content={twitter.creator} />
+<meta name="twitter:url" content={twitter.canonicalUrl} />
+
+<PosthogAnalytics />
+
+<meta name="robots" content="max-image-preview:large" />
+<link rel="alternate" type="application/rss+xml" title="Papra Blog" href={new URL('rss.xml', Astro.site)} />
