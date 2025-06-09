@@ -1,4 +1,5 @@
 ---
+import { Code } from 'astro:components';
 import { cn } from '../utils/cn';
 import BentoCard from './BentoCard.astro';
 
@@ -20,9 +21,21 @@ const filesIcons = [
 ];
 
 const getRandomIcon = () => filesIcons[Math.floor(Math.random() * filesIcons.length)];
+
+
+const codeSnippet = `
+curl -X POST https://api.papra.ai/v1/documents \\
+  -H "Authorization: Bearer $PAPRA_API_KEY" \\
+  -H "Content-Type: multipart/form-data" \\
+  -F "file=@/path/to/your/file.pdf"
+`.trim();
+
+
+
 ---
 
-<div class="py-32 bg-card p-6">
+<div class="pt-32 pb-48 bg-card p-6 relative overflow-hidden">
+  <div class="z-10 bg-primary w-90% max-w-1000px h-80px rounded-full blur-64 op-15 absolute bottom--50px left-50% -translate-x-50% "></div>
 
   <h2 class="text-3xl font-semibold text-pretty mb-2 text-center">
     Some Features
@@ -46,12 +59,42 @@ const getRandomIcon = () => filesIcons[Math.floor(Math.random() * filesIcons.len
     </BentoCard>
 
     <BentoCard
-      title="Email ingestion"
-      description="Generate a unique email address and forward your emails to Papra. We'll automatically save your email attachments as documents."
-      icon="i-tabler-mail"
+      title="Organizations"
+      description="Organize your documents into organizations. Organizations help you manage your documents and users, like a team or a company."
+      icon="i-tabler-building-community"
     >
-    <div class="mt-6" />
+    <div class="flex items-center gap-2 p-6 pt-10 pb-4 justify-center">
+      <div class="border rounded-xl p-3 flex items-center justify-center">
+        <span class="i-tabler-users size-6 text-muted-foreground"></span>
+      </div>
+
+      <div class="bg-muted-foreground h-3px w-20px rounded-full">
+      </div>
+
+      <div class="border rounded-xl p-3 flex items-center justify-center border-primary border-2">
+        <span class="i-tabler-user text-primary size-6"></span>
+      </div>
+
+      <div class="bg-muted-foreground h-3px w-20px rounded-full">
+      </div>
+
+      <div class="border rounded-xl p-3 flex items-center justify-center">
+        <span class="i-tabler-users size-6 text-muted-foreground"></span>
+      </div>
+    </div>
   </BentoCard>
+
+  <BentoCard
+    title="Email ingestion"
+    description="Generate a unique email address and forward your emails to Papra. We'll automatically save your email attachments as documents."
+    icon="i-tabler-mail"
+  >
+  <div class="flex items-center gap-4 p-6 pt-10 pb-4 justify-center">
+      <span class="i-tabler-file-text size-10 text-muted-foreground"></span>
+      <span class="i-tabler-arrow-right size-6 text-muted-foreground"></span>
+      <span class="i-tabler-mailbox size-10 text-primary"></span>
+  </div>
+</BentoCard>
   </div>
 
     <div class="flex flex-col gap-4 w-full">
@@ -92,9 +135,17 @@ const getRandomIcon = () => filesIcons[Math.floor(Math.random() * filesIcons.len
         </div>
       </BentoCard>
 
-      <BentoCard title="Documents tagging" description="Organize your documents with tags. Tags help you categorize and filter your documents easily." icon="i-tabler-tag">
+      <BentoCard title="Developer friendly" description="Papra is built with customizability in mind. We provide a powerful API, webhooks, CLI and SDK to help you integrate Papra into your existing workflow." icon="i-tabler-code">
+        <div class="flex justify-center p-6">
+          <Code code={codeSnippet} lang="bash" theme="vitesse-dark" class="text-xs bg-transparent!" />
+        </div>
+      </BentoCard>
+
+      <BentoCard title="Documents tagging" description="Organize your documents with tags. Tags help you categorize and filter your documents easily. Define tagging rules to automatically tag your documents." icon="i-tabler-tag">
         <div class="mt-6" />
       </BentoCard>
+
+
     </div>
   </div>
 </div>
