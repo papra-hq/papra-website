@@ -10,8 +10,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <div class="relative overflow-hidden pb-300px">
-    <div class="z-10 bg-primary size-128 rounded-full blur-84 op-20 transform translate-x--80% translate-y--33% absolute"></div>
-    <div class="z-10 bg-primary size-128 rounded-full blur-84 op-20 transform translate-x-80% translate-y-33% absolute right-0"></div>
+    <div class="z-10 bg-primary w-80% max-w-1000px h-400px rounded-xl blur-64 op-20 absolute bottom--100px left-50% -translate-x-50%"></div>
 
     <Header />
 
@@ -34,12 +33,34 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <div class="bg-card border-t">
-    <Image src={Hero} alt="Papra Screenshot" class="mx-auto max-w-1000px w-full relative z-50 mt--300px" />
+    <Image src={Hero} alt="Papra Screenshot" class="mx-auto max-w-1000px w-full relative z-50 mt--300px" loading="eager" />
   </div>
 
   <FeaturesBento />
 
-  <div class=" py-32 relative overflow-hidden border-y">
+
+  <div class="bg-card py-64 border-t flex items-center justify-center gap-8 sm:gap-12 flex-col sm:flex-row relative overflow-hidden">
+
+    <div class="max-w-600px px-6 text-center sm:text-left">
+      <h2 class="text-2xl sm:text-4xl font-bold max-w-650px mx-auto">
+        Papra is <span class="bg-primary text-primary-foreground px-3 py-1 rounded-md inline-block leading-tight">open-source</span>
+      </h2>
+
+      <p class="text-muted-foreground mx-auto mt-4 text-lg">
+        The whole Papra ecosystem is proudly open-source and easily self-hostable. It's available on <a href="https://github.com/papra-hq/papra" class="text-primary hover:underline">GitHub</a> under the <a href="https://github.com/papra-hq/papra/blob/main/LICENSE" class="text-primary hover:underline">AGPL-3.0</a> license.
+      </p>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 mt-8">
+      <a href="https://github.com/papra-hq/papra" class="border text-sm font-bold rounded py-2 px-4 rounded-xl hover:border-primary hover:text-primary transition flex items-center gap-2 flex-shrink-0" target="_blank"> See on GitHub <div class="i-tabler-arrow-right size-5" aria-hidden="true"></div> </a>
+    </div>
+
+  </div>
+
+
+  <div class="py-64 relative overflow-hidden border-y relative">
+  <div class="z-10 bg-primary w-90% max-w-1000px h-80px rounded-full blur-64 op-15 absolute top--50px left-50% -translate-x-50% "></div>
+
     <div class="z-10 bg-primary size-64 rounded-full blur-84 op-20 transform translate-x--80% translate-y--33% absolute"></div>
     <div class="z-10 bg-primary size-128 rounded-full blur-84 op-20 transform translate-x-80% translate-y-33% absolute right-0"></div>
 
