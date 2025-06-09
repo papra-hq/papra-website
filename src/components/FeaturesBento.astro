@@ -34,8 +34,8 @@ curl -X POST https://api.papra.ai/v1/documents \\
 
 ---
 
-<div class="pt-32 pb-48 bg-card p-6 relative overflow-hidden">
-  <div class="z-10 bg-primary w-90% max-w-1000px h-80px rounded-full blur-64 op-15 absolute bottom--50px left-50% -translate-x-50% "></div>
+<div class="pt-32 pb-64 bg-card p-6 relative overflow-hidden">
+  <div class="z-10 bg-primary w-90% max-w-1000px h-60px rounded-full blur-64 op-15 absolute bottom--50px left-50% -translate-x-50% "></div>
 
   <h2 class="text-3xl font-semibold text-pretty mb-2 text-center">
     Some Features
@@ -84,17 +84,11 @@ curl -X POST https://api.papra.ai/v1/documents \\
     </div>
   </BentoCard>
 
-  <BentoCard
-    title="Email ingestion"
-    description="Generate a unique email address and forward your emails to Papra. We'll automatically save your email attachments as documents."
-    icon="i-tabler-mail"
-  >
-  <div class="flex items-center gap-4 p-6 pt-10 pb-4 justify-center">
-      <span class="i-tabler-file-text size-10 text-muted-foreground"></span>
-      <span class="i-tabler-arrow-right size-6 text-muted-foreground"></span>
-      <span class="i-tabler-mailbox size-10 text-primary"></span>
-  </div>
+
+<BentoCard title="Documents tagging" description="Organize your documents with tags. Tags help you categorize and filter your documents easily. Define tagging rules to automatically tag your documents." icon="i-tabler-tag">
+  <div class="mt-6" />
 </BentoCard>
+
   </div>
 
     <div class="flex flex-col gap-4 w-full">
@@ -141,10 +135,18 @@ curl -X POST https://api.papra.ai/v1/documents \\
         </div>
       </BentoCard>
 
-      <BentoCard title="Documents tagging" description="Organize your documents with tags. Tags help you categorize and filter your documents easily. Define tagging rules to automatically tag your documents." icon="i-tabler-tag">
-        <div class="mt-6" />
-      </BentoCard>
 
+      <BentoCard
+        title="Email ingestion"
+        description="Generate a unique email address and forward your emails to Papra. We'll automatically save your email attachments as documents."
+        icon="i-tabler-mail"
+      >
+    <div class="flex items-center gap-4 p-6 pt-10 pb-4 justify-center">
+        <span class="i-tabler-file-text size-10 text-muted-foreground"></span>
+        <span class="i-tabler-arrow-right size-6 text-muted-foreground"></span>
+        <span class="i-tabler-mailbox size-10 text-primary"></span>
+    </div>
+  </BentoCard>
 
     </div>
   </div>
