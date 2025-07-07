@@ -1,19 +1,19 @@
 ---
-title: "Introducing Cadence-MQ: a backend-agnostic NodeJs job queue"
-description: Introducing Cadence-MQ, a backend-agnostic NodeJs job queue built for self-hosted applications and high-performance workloads.
+title: "Introducing Cadence-MQ: a backend-agnostic Node.js job queue"
+description: Introducing Cadence-MQ, a backend-agnostic Node.js job queue built for self-hosted applications and high-performance workloads.
 publishedAt: 2025-07-08
 lang: en
 ogImage: /src/content/blog/_images/introducing-cadence-mq/introducing-cadence-mq.og.png
 coverImage: /src/content/blog/_images/introducing-cadence-mq/introducing-cadence-mq.preview.png
 ---
 
-I recently released [Cadence-MQ](https://github.com/papra-hq/cadence-mq), a backend-agnostic NodeJs job queue built with self-hosting in mind.
+I recently released [Cadence-MQ](https://github.com/papra-hq/cadence-mq), a backend-agnostic Node.js job queue built with self-hosting in mind.
 
 ## Why another job queue?
 
 When developing a full-stack application, you often need to run background jobs, like sending emails, processing files, or any other task that doesn't need to be done immediately or that are too heavy to be done while holding an API request.
 
-There are a lot of quality job queue libraries for NodeJs out there, like [BullMQ](https://github.com/taskforcesh/bullmq), [Bee-Queue](https://github.com/bee-queue/bee-queue), [Kue](https://github.com/Automattic/kue) or [Agenda](https://github.com/agenda/agenda), but most of them are tied to a specific server-based database, mainly Redis. It's really relevant for distributed cloud-based applications, but rather heavy for self-hosted applications as you need to run a Redis server on your own.
+There are a lot of quality job queue libraries for Node.js out there, like [BullMQ](https://github.com/taskforcesh/bullmq), [Bee-Queue](https://github.com/bee-queue/bee-queue), [Kue](https://github.com/Automattic/kue) or [Agenda](https://github.com/agenda/agenda), but most of them are tied to a specific server-based database, mainly Redis. It's really relevant for distributed cloud-based applications, but rather heavy for self-hosted applications as you need to run a Redis server on your own.
 
 ## How is Cadence-MQ different?
 
