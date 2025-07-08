@@ -20,6 +20,7 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
     "astro": "^5.7.2",
+    "astro-capo": "^0.0.1",
     "astro-expressive-code": "^0.41.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
