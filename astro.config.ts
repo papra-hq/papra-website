@@ -15,6 +15,7 @@ export default defineConfig({
     createRedirectsFile({
       redirects: {
         '/discord': { status: 302, destination: config.discordInvite },
+        '/support': { status: 302, destination: config.sponsorLink },
       },
     }),
     astroExpressiveCode({
