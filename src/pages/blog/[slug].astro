@@ -39,10 +39,11 @@ const structuredData = {
   ...(ogImageUrl && { thumbnailUrl: ogImageUrl, image: [ogImageUrl] }),
   'datePublished': data.publishedAt.toISOString(),
   'potentialAction': [{ '@type': 'ReadAction', 'target': [Astro.url] }],
+
 };
 ---
 
-<Layout title={data.title} description={data.description} image={ogImage ? { src: ogImage.src, alt: data.title } : undefined}>
+<Layout title={data.title} description={data.description} image={ogImage ? { src: ogImage.src, alt: data.title } : undefined} jsonLd={structuredData}>
   <Header />
 
   <div class="flex flex-col min-h-screen">
@@ -74,5 +75,4 @@ const structuredData = {
   </div>
 
 
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </Layout>

@@ -1,4 +1,5 @@
 ---
+import { Head as CapoHead } from 'astro-capo';
 import { formatCanonicalUrl } from '../utils/urls';
 import PosthogAnalytics from './PosthogAnalytics.astro';
 
@@ -10,19 +11,38 @@ export type Props = {
   canonicalUrl?: URL | null;
   pageType?: 'website' | 'article';
   locale?: string;
+  extra?: string | string[];
+  jsonLd?: Record<string, unknown> | null;
 };
 
 const siteInfo = {
   name: 'Papra',
-  description: 'Your Open-Source Solution to Document Chaos',
-  image: { src: '/og/papra.png', alt: 'Papra - Your Open-Source Solution to Document Chaos' },
+  title: 'Papra - Simple & Secure Document Archiving for Long-Term Storage',
+  rootUrl: 'https://papra.app',
+  description: 'Store and archive receipts, warranties, and important docs with Papra, a simple and accessible platform for long-term document management and retrieval.',
+  image: { src: '/og/papra.png', alt: 'Papra - Simple & Secure Document Archiving for Long-Term Storage' },
   author: 'Corentin Thomasset',
 };
 
-const { rawTitle, description = siteInfo.description, image = siteInfo.image, canonicalUrl: rawCanonicalUrl, pageType = 'website', locale = 'en' } = Astro.props;
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  'name': siteInfo.name,
+  'operatingSystem': 'Web, Android, iOS',
+  'applicationCategory': 'Productivity',
+  'description': siteInfo.description,
+  'url': siteInfo.rootUrl,
+  'publisher': {
+    '@type': 'Organization',
+    'name': siteInfo.name,
+    'url': siteInfo.rootUrl,
+  },
+};
+
+const { rawTitle, description = siteInfo.description, image = siteInfo.image, canonicalUrl: rawCanonicalUrl, pageType = 'website', locale = 'en', jsonLd = organizationLd } = Astro.props;
 const canonicalUrl = formatCanonicalUrl(rawCanonicalUrl ?? new URL(Astro.request.url, Astro.site));
 
-const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(' | ');
+const title = rawTitle ?? [Astro.props.title, siteInfo.title].filter(Boolean).join(' - ');
 const resolvedImage = {
   src: new URL(image.src, Astro.site).toString(),
   alt: image.alt,
@@ -49,7 +69,11 @@ const twitter = {
     card: 'summary_large_image',
 };
 
+
+
 ---
+
+<CapoHead>
 
 <!-- High Priority Global Metadata -->
 <meta charset="utf-8" />
@@ -98,3 +122,6 @@ const twitter = {
 
 <meta name="robots" content="max-image-preview:large" />
 <link rel="alternate" type="application/rss+xml" title="Papra Blog" href={new URL('rss.xml', Astro.site)} />
+
+{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+</CapoHead>

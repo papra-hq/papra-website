@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: ^5.7.2
         version: 5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1)
+      astro-capo:
+        specifier: ^0.0.1
+        version: 0.0.1(astro@5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1))
       astro-expressive-code:
         specifier: ^0.41.1
         version: 0.41.1(astro@5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1))
@@ -62,10 +65,10 @@ importers:
         version: 5.7.3
       unocss:
         specifier: ^65.4.2
-        version: 65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
+        version: 65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
       unocss-preset-animations:
         specifier: ^1.1.0
-        version: 1.1.0(@unocss/preset-wind@66.1.0-beta.9)(unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3)))
+        version: 1.1.0(@unocss/preset-wind@66.1.0-beta.9)(unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3)))
       vitest:
         specifier: ^3.1.1
         version: 3.1.1(@types/debug@4.1.12)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
@@ -1571,6 +1574,11 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-capo@0.0.1:
+    resolution: {integrity: sha512-KyQD1mzgEQnbqrKpYdoIZMAYejkOcIJocdGuQBH9Yzr4KqGzIR8P2DDNbV/FQXaSyq900lCZwWJH45tBIQCG8w==}
+    peerDependencies:
+      astro: '>= 2.8'
 
   astro-eslint-parser@1.2.2:
     resolution: {integrity: sha512-JepyLROIad6f44uyqMF6HKE2QbunNzp3mYKRcPoDGt0QkxXmH222FAFC64WTyQu2Kg8NNEXHTN/sWuUId9sSxw==}
@@ -5002,13 +5010,13 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@unocss/astro@65.4.2(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))':
+  '@unocss/astro@65.4.2(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@unocss/core': 65.4.2
       '@unocss/reset': 65.4.2
-      '@unocss/vite': 65.4.2(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
+      '@unocss/vite': 65.4.2(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
     optionalDependencies:
-      vite: 6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+      vite: 6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -5166,7 +5174,7 @@ snapshots:
     dependencies:
       '@unocss/core': 65.4.2
 
-  '@unocss/vite@65.4.2(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))':
+  '@unocss/vite@65.4.2(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@rollup/pluginutils': 5.1.4(rollup@4.39.0)
@@ -5176,7 +5184,7 @@ snapshots:
       chokidar: 3.6.0
       magic-string: 0.30.17
       tinyglobby: 0.2.10
-      vite: 6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+      vite: 6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -5444,6 +5452,11 @@ snapshots:
   assertion-error@2.0.1: {}
 
   astring@1.9.0: {}
+
+  astro-capo@0.0.1(astro@5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1)):
+    dependencies:
+      astro: 5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1)
+      ultrahtml: 1.6.0
 
   astro-eslint-parser@1.2.2:
     dependencies:
@@ -8046,14 +8059,14 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  unocss-preset-animations@1.1.0(@unocss/preset-wind@66.1.0-beta.9)(unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))):
+  unocss-preset-animations@1.1.0(@unocss/preset-wind@66.1.0-beta.9)(unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))):
     dependencies:
       '@unocss/preset-wind': 66.1.0-beta.9
-      unocss: 65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
+      unocss: 65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
 
-  unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3)):
+  unocss@65.4.2(postcss@8.5.3)(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3)):
     dependencies:
-      '@unocss/astro': 65.4.2(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
+      '@unocss/astro': 65.4.2(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
       '@unocss/cli': 65.4.2(rollup@4.39.0)
       '@unocss/core': 65.4.2
       '@unocss/postcss': 65.4.2(postcss@8.5.3)
@@ -8069,9 +8082,9 @@ snapshots:
       '@unocss/transformer-compile-class': 65.4.2
       '@unocss/transformer-directives': 65.4.2
       '@unocss/transformer-variant-group': 65.4.2
-      '@unocss/vite': 65.4.2(rollup@4.39.0)(vite@6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
+      '@unocss/vite': 65.4.2(rollup@4.39.0)(vite@6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.3))
     optionalDependencies:
-      vite: 6.2.5(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+      vite: 6.3.0(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
     transitivePeerDependencies:
       - postcss
       - rollup
