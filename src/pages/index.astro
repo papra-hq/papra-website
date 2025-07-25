@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { config } from '../app.config';
 import Hero from '../assets/papra-screenshot.png';
+import FaqAccordion from '../components/FaqAccordion.astro';
 import FeaturesBento from '../components/FeaturesBento.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -9,22 +10,20 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <div class="relative overflow-hidden pb-300px">
+  <div class="relative overflow-hidden pb-300px bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px]">
+    <div class="z-9 bg-gradient-to-b from-background to-transparent w-full h-full absolute top-0 left-0"></div>
     <div class="z-10 bg-primary w-80% max-w-1000px h-400px rounded-xl blur-64 op-20 absolute bottom--100px left-50% -translate-x-50%"></div>
 
     <Header />
 
-    <div class="max-w-2xl mx-auto pt-20 pb-32 px-4 mt-24 text-center">
+    <div class="max-w-2xl mx-auto pt-20 pb-32 px-4 mt-24 text-center z-50 relative">
       <h1 class="text-4xl font-bold mb-4 text-pretty">Your Open-Source Solution to Document Chaos</h1>
       <p class="text-lg text-muted-foreground">An open-source document management platform designed to help you organize, secure, and archive your files effortlessly.</p>
 
       <div class="flex items-center justify-center gap-2 mt-8">
         <a href="https://demo.papra.app" class="border text-sm font-bold rounded py-2 px-4 rounded-xl hover:border-primary hover:text-primary transition" target="_blank"> Live Demo </a>
 
-        <a
-          href={config.requestEarlyAccessLink}
-          class="text-sm flex items-center gap-1.5 bg-primary hover:bg-primary/80 font-bold rounded py-2 px-4 rounded-xl text-primary-foreground transition"
-        >
+        <a href={config.requestEarlyAccessLink} class="text-sm flex items-center gap-1.5 bg-primary hover:bg-primary/80 font-bold rounded py-2 px-4 rounded-xl text-primary-foreground transition">
           Join the private beta
           <div class="i-tabler-arrow-right size-5"></div>
         </a>
@@ -38,28 +37,31 @@ import Layout from '../layouts/Layout.astro';
 
   <FeaturesBento />
 
-
   <div class="bg-card py-64 border-t flex items-center justify-center gap-8 sm:gap-12 flex-col sm:flex-row relative overflow-hidden">
-
     <div class="max-w-600px px-6 text-center sm:text-left">
       <h2 class="text-2xl sm:text-4xl font-bold max-w-650px mx-auto">
         Papra is <span class="bg-primary text-primary-foreground px-3 py-1 rounded-md inline-block leading-tight">open-source</span>
       </h2>
 
       <p class="text-muted-foreground mx-auto mt-4 text-lg">
-        The whole Papra ecosystem is proudly open-source and easily self-hostable. It's available on <a href="https://github.com/papra-hq/papra" class="text-primary hover:underline">GitHub</a> under the <a href="https://github.com/papra-hq/papra/blob/main/LICENSE" class="text-primary hover:underline">AGPL-3.0</a> license.
+        The whole Papra ecosystem is proudly open-source and easily self-hostable. It's available on <a href="https://github.com/papra-hq/papra" class="text-primary hover:underline">GitHub</a> under the
+        <a href="https://github.com/papra-hq/papra/blob/main/LICENSE" class="text-primary hover:underline">AGPL-3.0</a> license.
       </p>
     </div>
 
     <div class="flex items-center justify-center gap-2 mt-8">
-      <a href="https://github.com/papra-hq/papra" class="border text-sm font-bold rounded py-2 px-4 rounded-xl hover:border-primary hover:text-primary transition flex items-center gap-2 flex-shrink-0" target="_blank"> See on GitHub <div class="i-tabler-arrow-right size-5" aria-hidden="true"></div> </a>
+      <a
+        href="https://github.com/papra-hq/papra"
+        class="border text-sm font-bold rounded py-2 px-4 rounded-xl hover:border-primary hover:text-primary transition flex items-center gap-2 flex-shrink-0"
+        target="_blank"
+      >
+        See on GitHub <div class="i-tabler-arrow-right size-5" aria-hidden="true"></div>
+      </a>
     </div>
-
   </div>
 
-
-  <div class="py-64 relative overflow-hidden border-y relative">
-  <div class="z-10 bg-primary w-90% max-w-1000px h-80px rounded-full blur-64 op-15 absolute top--50px left-50% -translate-x-50% "></div>
+  <!-- <div class="py-64 relative overflow-hidden border-y relative">
+    <div class="z-10 bg-primary w-90% max-w-1000px h-80px rounded-full blur-64 op-15 absolute top--50px left-50% -translate-x-50%"></div>
 
     <div class="z-10 bg-primary size-64 rounded-full blur-84 op-20 transform translate-x--80% translate-y--33% absolute"></div>
     <div class="z-10 bg-primary size-128 rounded-full blur-84 op-20 transform translate-x-80% translate-y-33% absolute right-0"></div>
@@ -70,25 +72,27 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-lg mt-4">- Ada, FICSIT Inc.</div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-<div class="bg-card py-32">
-  <div class="max-w-1200px mx-auto px-6">
-    <div class="border rounded-xl bg-background pt-32 pb-24 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] px-6">
-      <h2 class="text-2xl sm:text-4xl font-bold text-center max-w-650px mx-auto">
-        Trusted by home, startups, and enterprises of all sizes.
-      </h2>
+  <FaqAccordion />
 
-      <div class="flex mt-4 items-center justify-center">
-        <a href={config.requestEarlyAccessLink} class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
-          Join the private beta
+  <div class="bg-card py-32">
+    <div class="max-w-1200px mx-auto px-6">
+      <div
+        class="border rounded-xl bg-background pt-32 pb-24 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] px-6"
+      >
+        <h2 class="text-2xl sm:text-4xl font-bold text-center max-w-650px mx-auto">Trusted by home, startups, and enterprises of all sizes.</h2>
 
-          <div class="i-tabler-arrow-right ml-2 size-5" aria-hidden="true"></div>
-        </a>
+        <div class="flex mt-4 items-center justify-center">
+          <a href={config.requestEarlyAccessLink} class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
+            Join the private beta
+
+            <div class="i-tabler-arrow-right ml-2 size-5" aria-hidden="true"></div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <Footer />
 </Layout>
