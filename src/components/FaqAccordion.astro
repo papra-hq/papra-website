@@ -1,0 +1,103 @@
+---
+const title = 'Frequently Asked Questions';
+const description = 'Everything you need to know about Papra';
+const items = [
+    {
+        question: 'What is Papra?',
+        answer: 'Papra is an open-source document management platform designed to help you organize, secure, and archive your files effortlessly. It provides a centralized solution for managing all your documents in one place.',
+    },
+    {
+        question: 'Is Papra really open-source?',
+        answer: 'Yes! Papra is completely open-source and available under the AGPL-3.0 license. You can view the source code on GitHub and even self-host it if you prefer.',
+    },
+    {
+        question: 'How does document organization work?',
+        answer: 'Papra uses a combination of organizations, tags, and powerful search functionality to help you organize your documents. You can create organizations for teams or companies, add tags for categorization, and find documents quickly with our search feature.',
+    },
+    {
+        question: 'Can I self-host Papra?',
+        answer: 'Absolutely! Since Papra is open-source, you can self-host it on your own infrastructure. This gives you complete control over your data and allows you to customize the platform to your specific needs.',
+    },
+    {
+        question: 'What file types does Papra support?',
+        answer: 'Papra supports a wide range of document types including PDFs, text files, code files, invoices, spreadsheets, and many more. The platform is designed to handle various file formats commonly used in business and personal document management.',
+    },
+    {
+        question: 'Are my documents secure?',
+        answer: 'Yes! Papra uses industry-standard in-transit and at-rest encryption to protect your documents.',
+    },
+    {
+        question: 'Are my data stored in Europe?',
+        answer: 'Yes! Papra is hosted in Europe and all data is stored in Europe.',
+    },
+    {
+        question: 'How can I get started with Papra?',
+        answer: 'Getting started with Papra is easy! Simply sign up for a free account, upload your documents, and start organizing them. You can also check out our documentation for more detailed instructions on how to use the platform.',
+    },
+];
+---
+
+<div class="max-w-800px mx-auto px-6 py-42">
+    <h2 class="text-3xl font-semibold text-pretty mb-4 text-center">{title}</h2>
+    <p class="text-muted-foreground text-lg text-center mb-24">{description}</p>
+
+    <div>
+        {
+            items.map((item, index) => (
+                <div class="border-x border-t first:rounded-t-lg last:border-b last:rounded-b-lg bg-background overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between" data-faq-toggle data-faq-index={index} aria-expanded="false" aria-controls={`faq-content-${index}`}>
+                        <span class="font-semibold text-sm sm:text-base">{item.question}</span>
+                        <div class="i-tabler-chevron-down size-5 text-muted-foreground transition-transform duration-200" data-faq-icon aria-hidden="true" />
+                    </button>
+
+                    <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out" data-faq-content data-faq-index={index} id={`faq-content-${index}`}>
+                        <div class="pb-4">
+                            <p class="text-muted-foreground leading-relaxed">{item.answer}</p>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    function expandItem(toggle: HTMLElement, content: HTMLElement, icon: HTMLElement) {
+      toggle.setAttribute('aria-expanded', 'true');
+      content.style.maxHeight = `${content.scrollHeight}px`;
+      icon.style.transform = 'rotate(180deg)';
+    }
+
+    function collapseItem(toggle: HTMLElement, content: HTMLElement, icon: HTMLElement) {
+      toggle.setAttribute('aria-expanded', 'false');
+      content.style.maxHeight = '0';
+      icon.style.transform = 'rotate(0deg)';
+    }
+
+    function handleToggleClick(e: Event) {
+      const target = e.currentTarget as HTMLElement;
+      const index = target.getAttribute('data-faq-index');
+      const content = document.querySelector(`[data-faq-content][data-faq-index="${index}"]`) as HTMLElement;
+      const icon = target.querySelector('[data-faq-icon]') as HTMLElement;
+      const isExpanded = target.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        collapseItem(target, content, icon);
+      } else {
+        expandItem(target, content, icon);
+      }
+    }
+
+    function initFaqAccordion() {
+      const toggles = document.querySelectorAll('[data-faq-toggle]');
+      toggles.forEach((toggle) => {
+        toggle.addEventListener('click', handleToggleClick);
+      });
+    }
+
+    // Initialize FAQ accordion when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initFaqAccordion);
+
+    // Also initialize for Astro's client-side navigation
+    document.addEventListener('astro:page-load', initFaqAccordion);
+</script>
