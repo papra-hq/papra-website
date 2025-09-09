@@ -20,7 +20,7 @@ Papra uses a **two-layer encryption approach**:
 1. **Document Encryption Key (DEK)**: Papra generates a random encryption key for each document used to encrypt the document content
 2. **Key Encryption Key (KEK)**: The DEK is encrypted using your provided master key and stored in the database
 
-This architecture ensures that even if your storage is compromised, your documents remain encrypted and unreadable without access to both the database and your encryption keys, and it permits to simply rotate the encryption key without having to re-encrypt all the documents.
+This architecture ensures that even if your storage is compromised, your documents remain encrypted and unreadable without access to both the database and your encryption keys, and it allows you to simply rotate the encryption key without having to re-encrypt all the documents.
 
 ### Quick Setup
 
