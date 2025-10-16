@@ -37,7 +37,7 @@ Papra is an open-source document management platform managed by Corentin Thomass
 
 ### 6. Data Ownership and Privacy
 - Users retain full ownership of their uploaded data.
-- Papra never sells user data to third parties and uses trusted providers (Render, Cloudflare, Turso, Posthog) to store and process data securely, exclusively within Europe, ensuring GDPR compliance.
+- Papra never sells user data to third parties and uses trusted providers (Render, Cloudflare, Turso, PostHog) to store and process data securely, exclusively within Europe, ensuring GDPR compliance.
 
 ### 7. Data Retention and Deletion
 - Upon account deletion, user data will be permanently removed within 30 days.
