@@ -14,7 +14,7 @@ description: Privacy Policy for Papra, the document management platform.
 ### 1. Information Collection
 Papra collects the following personal data:
 - Email addresses, names, and authentication details (email/password or Single Sign-On providers such as Google or GitHub).
-- Usage and analytics data collected via Posthog (including IP addresses, pages visited, interactions, and usage patterns).
+- Usage and analytics data collected via PostHog (including IP addresses, pages visited, interactions, and usage patterns).
 - Documents uploaded by users, including metadata (titles, descriptions, tags) and document content.
 
 ### 2. Purpose of Data Collection
@@ -22,12 +22,12 @@ Papra collects data to:
 - Provide, operate, and maintain the services offered by Papra.
 - Offer user support and address technical issues.
 - Analyze usage to continuously improve our services.
-- Perform marketing analysis and related activities (via Posthog).
+- Perform marketing analysis and related activities (via PostHog).
 
 ### 3. Cookies and Tracking Technologies
 Papra employs the following types of cookies and tracking technologies:
 - **Strictly Necessary Cookies**: Required for platform functionality, user authentication, and session management. These cannot be disabled.
-- **Analytics Cookies**: Posthog analytics to understand user behavior, track feature usage, and improve service quality. These cookies collect anonymized usage data.
+- **Analytics Cookies**: PostHog analytics to understand user behavior, track feature usage, and improve service quality. These cookies collect anonymized usage data.
 - **Performance Cookies**: To monitor platform performance and identify technical issues.
 
 You can manage your cookie preferences through your browser settings. However, disabling certain cookies may affect platform functionality. For more information about managing cookies, visit your browser's help documentation.
@@ -46,7 +46,7 @@ Papra uses the following trusted third-party services to operate and improve the
 - **Render**: Hosting infrastructure and application deployment
 - **Cloudflare**: Document Storage, CDN, security, and DDoS protection services
 - **Turso**: Database hosting and management (based on libSQL/SQLite)
-- **Posthog**: Analytics, product insights, and feature usage tracking
+- **PostHog**: Analytics, product insights, and feature usage tracking
 - **Stripe**: Payment processing for subscriptions (does not store card details on Papra servers)
 
 All third-party providers are carefully selected based on their security practices and GDPR compliance. These providers only receive the minimum data necessary to perform their services.
