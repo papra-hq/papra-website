@@ -9,6 +9,7 @@ export default antfu({
 
   ignores: [
     'src/components/PosthogAnalytics.astro', // Inlined script
+    'src/components/ContactForm.astro', // Inlined script
   ],
 
   rules: {
