@@ -1,5 +1,7 @@
 ---
 import { Head as CapoHead } from 'astro-capo';
+import { getPathWithoutLocale } from '../i18n/i18n';
+import { DEFAULT_LOCALE, LOCALES } from '../i18n/i18n.constants';
 import { formatCanonicalUrl } from '../utils/urls';
 import PosthogAnalytics from './PosthogAnalytics.astro';
 
@@ -49,79 +51,96 @@ const resolvedImage = {
 };
 
 const og = {
-    name: siteInfo.name,
-    title,
-    description,
-    image: resolvedImage,
-    canonicalUrl,
-    locale,
-    type: pageType,
+  name: siteInfo.name,
+  title,
+  description,
+  image: resolvedImage,
+  canonicalUrl,
+  locale,
+  type: pageType,
 };
 
 const twitter = {
-    name: siteInfo.name,
-    title,
-    description,
-    image: resolvedImage,
-    canonicalUrl,
-    locale,
-    creator: '@cthmsst',
-    card: 'summary_large_image',
+  name: siteInfo.name,
+  title,
+  description,
+  image: resolvedImage,
+  canonicalUrl,
+  locale,
+  creator: '@cthmsst',
+  card: 'summary_large_image',
 };
 
+const isMultiLangPage = Boolean(Astro.params.locale);
 
+// Generate alternate links for multi-language pages
+const alternateLinks = isMultiLangPage
+  ? LOCALES.map((loc) => {
+      const pathWithoutLocale = getPathWithoutLocale(Astro.url);
+      const href = new URL(`/${loc}${pathWithoutLocale}`, Astro.site).toString();
 
+      return { hreflang: loc, href };
+    })
+  : [];
 ---
 
 <CapoHead>
+  <!-- High Priority Global Metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content="#dbfd85" />
 
-<!-- High Priority Global Metadata -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
-<title>{title}</title>
-<meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content="#dbfd85" />
+  <meta name="description" content={description} />
+  <meta name="author" content={siteInfo.author} />
 
-<meta name="description" content={description} />
-<meta name="author" content={siteInfo.author} />
+  <!-- Low Priority Global Metadata -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="author" href="humans.txt" />
+  <link rel="canonical" href={canonicalUrl} />
 
+  {
+    alternateLinks.length > 0 && (
+      <>
+        <link rel="alternate" hreflang="x-default" href={new URL(`/${DEFAULT_LOCALE}${getPathWithoutLocale(Astro.url)}`, Astro.site).toString()} />
+        {alternateLinks.map(({ hreflang, href }) => (
+          <link rel="alternate" hreflang={hreflang} href={href} />
+        ))}
+      </>
+    )
+  }
 
-<!-- Low Priority Global Metadata -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+  <!-- OpenGraph Tags -->
+  <meta property="og:title" content={og.title} />
+  <meta property="og:type" content={og.type} />
+  <meta property="og:url" content={og.canonicalUrl} />
+  <meta property="og:locale" content={og.locale} />
+  <meta property="og:description" content={og.description} />
+  <meta property="og:site_name" content={og.name} />
+  <meta property="og:image" content={og.image.src} />
+  <meta property="og:image:alt" content={og.image.alt} />
 
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="author" href="humans.txt" />
-<link rel="canonical" href={canonicalUrl} />
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content={twitter.card} />
+  <meta name="twitter:title" content={twitter.title} />
+  <meta name="twitter:description" content={twitter.description} />
+  <meta name="twitter:image" content={twitter.image.src} />
+  <meta name="twitter:image:alt" content={twitter.image.alt} />
+  <meta name="twitter:site" content={twitter.creator} />
+  <meta name="twitter:creator" content={twitter.creator} />
+  <meta name="twitter:url" content={twitter.canonicalUrl} />
 
-<!-- OpenGraph Tags -->
-<meta property="og:title" content={og.title} />
-<meta property="og:type" content={og.type} />
-<meta property="og:url" content={og.canonicalUrl} />
-<meta property="og:locale" content={og.locale} />
-<meta property="og:description" content={og.description} />
-<meta property="og:site_name" content={og.name} />
-<meta property="og:image" content={og.image.src} />
-<meta property="og:image:alt" content={og.image.alt} />
+  <PosthogAnalytics />
 
-<!-- Twitter Tags -->
-<meta name="twitter:card" content={twitter.card} />
-<meta name="twitter:title" content={twitter.title} />
-<meta name="twitter:description" content={twitter.description} />
-<meta name="twitter:image" content={twitter.image.src} />
-<meta name="twitter:image:alt" content={twitter.image.alt} />
-<meta name="twitter:site" content={twitter.creator} />
-<meta name="twitter:creator" content={twitter.creator} />
-<meta name="twitter:url" content={twitter.canonicalUrl} />
+  <meta name="robots" content="max-image-preview:large" />
+  <link rel="alternate" type="application/rss+xml" title="Papra Blog" href={new URL('rss.xml', Astro.site)} />
 
-<PosthogAnalytics />
-
-<meta name="robots" content="max-image-preview:large" />
-<link rel="alternate" type="application/rss+xml" title="Papra Blog" href={new URL('rss.xml', Astro.site)} />
-
-{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </CapoHead>
