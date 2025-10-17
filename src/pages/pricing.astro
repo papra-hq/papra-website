@@ -1,0 +1,327 @@
+---
+import { config } from '../app.config';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import LaunchBanner from '../components/LaunchBanner.astro';
+import Layout from '../layouts/Layout.astro';
+
+const discount = config.launchDiscount;
+
+type Plan = {
+  name: string;
+  monthlyPrice: number;
+  annualPrice: number;
+  features: string[];
+  cta: {
+    text: string;
+    url: string;
+  };
+  popular?: boolean;
+} & (
+  | {
+      discountedMonthlyPrice?: undefined;
+      discountedAnnualPrice?: undefined;
+    }
+    | {
+      discountedMonthlyPrice: number;
+      discountedAnnualPrice: number;
+    }
+);
+
+const plans: Plan[] = [
+  {
+    name: 'Free, forever',
+    monthlyPrice: 0,
+    annualPrice: 0,
+    features: ['512MB storage (~4,000 standard PDF)', '3 members per organization', 'Max upload size: 25MB', '1 intake email address', 'Basic support'],
+    cta: {
+      text: 'Get Started',
+      url: 'https://dashboard.papra.app',
+    },
+  },
+  {
+    name: 'Plus',
+    monthlyPrice: 9,
+    annualPrice: 90,
+    features: ['5GB storage (~20,000 standard PDF)', '10 members per organization', 'Max upload size: 100MB', '10 intake email addresses', 'Priority support'],
+    cta: {
+      text: 'Get Started',
+      url: 'https://dashboard.papra.app',
+    },
+    popular: true,
+  },
+
+  {
+    name: 'Pro',
+    monthlyPrice: 30,
+    annualPrice: 300,
+    features: ['50GB storage (~20,000 standard PDF)', '50 members per organization', 'Max upload size: 500MB', '100 intake email addresses', 'Priority support'],
+    cta: {
+      text: 'Get Started',
+      url: 'https://dashboard.papra.app',
+    },
+  },
+].map((plan) => {
+  if (discount.enabled && plan.monthlyPrice > 0) {
+    const discountMultiplier = 1 - discount.percentage / 100;
+    return {
+      ...plan,
+      discountedMonthlyPrice: plan.monthlyPrice * discountMultiplier,
+      discountedAnnualPrice: plan.annualPrice * discountMultiplier,
+    };
+  }
+  return plan;
+});
+---
+
+<Layout>
+  {discount.enabled && <LaunchBanner />}
+  <div class="bg-card flex flex-col w-full min-h-screen relative">
+    <Header class={discount.enabled ? 'absolute! top-0' : undefined} />
+
+    <div class="w-full bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] bg-background border-b pt-32 pb-24">
+      <div class="max-w-700px mx-auto p-4 text-center">
+        <h1 class="text-3xl md:text-4xl mb-4 font-bold">Simple, transparent pricing</h1>
+        <p class="text-base md:text-lg text-muted-foreground leading-tight">Choose the plan that fits your needs. All plans include core Papra features.</p>
+      </div>
+    </div>
+
+    <div class="max-w-1200px mx-auto px-6 md:px-8 flex-1 w-full">
+      <div class="flex flex-col items-center justify-center my-12 gap-3">
+        <div class="inline-flex rounded-lg border border-border bg-muted p-1" role="group">
+          <button id="monthly-btn" type="button" class="px-4 py-2 text-sm font-medium rounded-md transition-colors"> Monthly </button>
+          <button id="annual-btn" type="button" class="px-4 py-2 text-sm font-medium rounded-md transition-colors bg-background text-foreground shadow-sm flex items-center">
+            Annual
+          </button>
+        </div>
+        <p class="text-sm text-muted-foreground text-center">
+          Prices shown in USD. Your bank will convert to your local currency at checkout if needed.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          plans.map(plan => (
+            <div class={`relative border rounded-xl bg-background p-6 flex flex-col ${plan.popular ? 'border-primary' : ''}`}>
+              <div class="flex gap-2 absolute top--3 right-6">
+                {discount.enabled && plan.discountedMonthlyPrice !== undefined && (
+                  <div class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                    {discount.percentage}% OFF
+                  </div>
+                )}
+                {plan.popular && <div class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>}
+              </div>
+
+              <h2 class="text-2xl font-bold mb-2">{plan.name}</h2>
+
+              <div class="mb-6 border-b pb-6">
+                <div>
+                  {plan.discountedMonthlyPrice !== undefined
+? (
+                    <div class="flex gap-1 flex-wrap items-end">
+                      <div class="flex flex-col items-start gap-1">
+                        <span class="monthly-price text-2xl font-medium text-muted-foreground hidden lh-none relative after:(content-[''] absolute left--5px right--5px top-1/2 h-2px bg-muted-foreground/40 rounded-full -rotate-12 origin-center)">${plan.monthlyPrice}</span>
+                        <span class="monthly-price text-5xl font-semibold hidden lh-none text-primary">${plan.discountedMonthlyPrice}</span>
+                      </div>
+                      {plan.annualPrice > 0
+? (
+                        <div class="flex flex-col items-start gap-1">
+                          <span class="annual-price text-2xl text-muted-foreground lh-none relative after:(content-[''] absolute left--5px right--5px top-1/2 h-2px bg-muted-foreground/40 rounded-full -rotate-12 origin-center)">${Math.round((100 * plan.annualPrice) / 12) / 100}</span>
+                          <span class="annual-price text-5xl font-semibold lh-none text-primary">${Math.round((100 * plan.discountedAnnualPrice) / 12) / 100}</span>
+                        </div>
+                      )
+: (
+                        <span class="annual-price text-5xl font-semibold">$0</span>
+                      )}
+                      <div>
+                        <span class="text-muted-foreground">/ month</span>
+                        {plan.annualPrice > 0 && <div class="text-xs text-muted-foreground annual-price">${plan.discountedAnnualPrice} billed annually</div>}
+                      </div>
+                    </div>
+                  )
+: (
+                    <div class="flex gap-1 flex-wrap items-end">
+                      <span class="monthly-price text-5xl font-semibold hidden lh-none">${plan.monthlyPrice}</span>
+                      {plan.annualPrice > 0
+? (
+                        <span class="annual-price text-5xl font-semibold lh-none">${Math.round((100 * plan.annualPrice) / 12) / 100}</span>
+                      )
+: (
+                        <span class="annual-price text-5xl font-semibold">$0</span>
+                      )}
+                      <div>
+                        <span class="text-muted-foreground">/ month</span>
+                        {plan.annualPrice > 0 && <div class="text-xs text-muted-foreground annual-price">${plan.annualPrice} billed annually</div>}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <ul class="space-y-3 mb-8 flex-1">
+                {plan.features.map(feature => (
+                  <li class="flex items-start gap-2">
+                    <div class="rounded-lg bg-muted p-0.75">
+                      <div class="i-tabler-check size-4 text-primary flex-shrink-0" />
+                    </div>
+                    <span class="text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={plan.cta.url}
+                class={`text-center font-semibold px-4 py-2.5 rounded-lg transition ${
+                  plan.popular ? 'bg-primary text-primary-foreground hover:bg-primary/80' : 'border border-border hover:border-primary hover:text-primary'
+                }`}
+              >
+                {plan.cta.text}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border rounded-xl bg-background p-6 flex-col items-start">
+          <h2 class="text-2xl font-bold">Enterprise solutions</h2>
+          <p class="text-muted-foreground mt-2 mb-4 flex-1">
+            Looking for a custom plan tailored to your organization's needs? <br /> We offer enterprise solutions with advanced features, dedicated support, and flexible pricing. Contact us to discuss
+            your requirements and get a personalized quote.
+          </p>
+          <a href="/contact" class="inline-flex items-center gap-2 border font-semibold px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition">
+            Contact us
+            <div class="i-tabler-arrow-right size-5"></div>
+          </a>
+        </div>
+
+        <div class="border rounded-xl bg-background p-6 flex flex-col items-start">
+          <h2 class="text-2xl font-bold">Self-hosting</h2>
+          <p class="text-muted-foreground mt-2 mb-4 flex-1">
+            Papra is open-source, under the <a href="https://github.com/papra-app/papra/blob/main/LICENSE" class="underline hover:text-primary transition">AGPLv3</a> and can be self-hosted on your own
+            infrastructure at no cost. <br />Get started with our documentation.
+          </p>
+          <a
+            href="https://docs.papra.app/self-hosting/using-docker/"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 border font-semibold px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition"
+          >
+            View self-hosting guide
+            <div class="i-tabler-arrow-right size-5"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <FaqAccordion
+      title="Frequently Asked Questions"
+      description="Everything you need to know about Papra pricing"
+      items={[
+        {
+          question: 'Can I change plans at any time?',
+          answer:
+            'Yes, you can upgrade or downgrade your plan at any time. If you upgrade, you\'ll be charged a prorated amount for the remainder of your billing period. If you downgrade, the change will take effect at the end of your current billing cycle.',
+        },
+        {
+          question: 'What happens if I exceed my storage limit?',
+          answer:
+            'If you reach your storage limit, you won\'t be able to upload new documents until you either upgrade your plan or delete some existing documents. We\'ll send you notifications before you reach your limit.',
+        },
+        {
+          question: 'Is there a free trial for paid plans?',
+          answer: 'You can start with our Free plan to explore Papra\'s features. When you\'re ready to upgrade, you can switch to a paid plan at any time.',
+        },
+        {
+          question: 'What payment methods do you accept?',
+          answer: 'We accept all major credit cards (Visa, MasterCard, American Express) and debit cards. All payments are processed securely through our payment provider.',
+        },
+        {
+          question: 'Can I cancel my subscription anytime?',
+          answer: 'Yes, you can cancel your subscription at any time. Your account will remain active until the end of your current billing period, after which you\'ll be moved to the Free plan.',
+        },
+        {
+          question: 'Do you offer discounts for annual billing?',
+          answer: 'Yes! Annual plans save you 20% compared to monthly billing.',
+        },
+        {
+          question: 'How do I apply a promo code?',
+          answer: 'During checkout, look for the "Add promotion code" link in the products details. Click it, enter your promo code, and the discount will be applied automatically to your order.',
+        },
+        {
+          question: 'Can I add more team members later?',
+          answer: 'Yes, each plan has a specific member limit. If you need more team members, you can upgrade to a higher plan or contact us for a custom enterprise solution.',
+        },
+      ]}
+    />
+
+    <div class="bg-card pb-32">
+      <div class="max-w-1200px mx-auto px-6">
+        <div
+          class="border rounded-xl bg-background pt-32 pb-24 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] px-6"
+        >
+          <h2 class="text-2xl sm:text-4xl font-bold text-center max-w-650px mx-auto">Trusted by homes, startups, and enterprises of all sizes.</h2>
+
+          <div class="flex mt-4 items-center justify-center">
+            <a href={config.getStartedLink} class="font-semibold text-background px-4 py-2 hover:bg-primary/80 rounded-lg bg-primary transition mt-8 inline-block flex items-center">
+              Get started
+
+              <div class="i-tabler-arrow-right ml-2 size-5" aria-hidden="true"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const monthlyBtn = document.getElementById('monthly-btn');
+    const annualBtn = document.getElementById('annual-btn');
+    const monthlyPrices = document.querySelectorAll('.monthly-price');
+    const annualPrices = document.querySelectorAll('.annual-price');
+    const monthlyPromoPrices = document.querySelectorAll('.monthly-promo-price');
+    const annualPromoPrices = document.querySelectorAll('.annual-promo-price');
+
+    const activeClasses = ['bg-background', 'text-foreground', 'shadow-sm'];
+    const inactiveClasses = ['bg-transparent', 'text-muted-foreground'];
+
+    function setAnnual() {
+      // Update button styles
+      annualBtn?.classList.add(...activeClasses);
+      annualBtn?.classList.remove(...inactiveClasses);
+      monthlyBtn?.classList.remove(...activeClasses);
+      monthlyBtn?.classList.add(...inactiveClasses);
+
+      // Toggle price visibility
+      monthlyPrices.forEach(el => el.classList.add('hidden'));
+      annualPrices.forEach(el => el.classList.remove('hidden'));
+      monthlyPromoPrices.forEach(el => el.classList.add('hidden'));
+      annualPromoPrices.forEach(el => el.classList.remove('hidden'));
+    }
+
+    function setMonthly() {
+      // Update button styles
+      monthlyBtn?.classList.add(...activeClasses);
+      monthlyBtn?.classList.remove(...inactiveClasses);
+      annualBtn?.classList.remove(...activeClasses);
+      annualBtn?.classList.add(...inactiveClasses);
+
+      // Toggle price visibility
+      monthlyPrices.forEach(el => el.classList.remove('hidden'));
+      annualPrices.forEach(el => el.classList.add('hidden'));
+      monthlyPromoPrices.forEach(el => el.classList.remove('hidden'));
+      annualPromoPrices.forEach(el => el.classList.add('hidden'));
+    }
+
+    monthlyBtn?.addEventListener('click', setMonthly);
+    annualBtn?.addEventListener('click', setAnnual);
+
+    // Start with annual selected
+    setAnnual();
+  });
+</script>
