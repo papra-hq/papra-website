@@ -233,7 +233,7 @@ export const translations: Partial<TranslationsDictionary> = {
 
   // Contact Page
   'contact.title': 'Contact',
-  'contact.subtitle': 'Une question ? Besoin d\'aide ? Contactez-nous :',
+  'contact.subtitle': 'Une question ? Besoin d\'aide ? Contactez-nous !',
   'contact.option.email.name': 'Email',
   'contact.option.email.label': 'contact@papra.app',
   'contact.option.discord.name': 'Discord',
