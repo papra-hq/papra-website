@@ -1,24 +1,28 @@
 ---
+import { useI18n } from '../i18n/i18n';
 import { cn } from '../utils/cn';
+import LanguagePicker from './LanguagePicker.astro';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
 
 const socials = [
   {
-    label: 'Bluesky',
+    label: t('footer.social.bluesky'),
     url: 'https://bsky.app/profile/papra.app',
     icon: 'i-tabler-brand-bluesky',
   },
   {
-    label: 'GitHub',
+    label: t('footer.social.github'),
     url: 'https://github.com/papra-hq/papra',
     icon: 'i-tabler-brand-github',
   },
   {
-    label: 'Discord',
+    label: t('footer.social.discord'),
     url: '/discord',
     icon: 'i-tabler-brand-discord',
   },
   {
-    label: 'Reddit',
+    label: t('footer.social.reddit'),
     url: 'https://www.reddit.com/r/Papra',
     icon: 'i-tabler-brand-reddit',
   },
@@ -29,30 +33,30 @@ const sections: {
   links: { label: string; url: string; target?: string; rel?: string }[];
 }[] = [
   {
-    title: 'Community',
+    title: t('footer.section.community'),
     links: socials,
   },
   {
-    title: 'Papra',
+    title: t('footer.section.papra'),
     links: [
       {
-        label: 'Blog',
+        label: t('footer.link.blog'),
         url: '/blog',
       },
       {
-        label: 'Demo app',
+        label: t('footer.link.demo-app'),
         url: 'https://demo.papra.app',
       },
       {
-        label: 'Documentation',
+        label: t('footer.link.documentation'),
         url: 'https://docs.papra.app',
       },
       {
-        label: 'Self-host',
+        label: t('footer.link.self-host'),
         url: 'https://docs.papra.app/self-hosting/using-docker/',
       },
       {
-        label: 'Roadmap',
+        label: t('footer.link.roadmap'),
         url: 'https://github.com/orgs/papra-hq/projects/2',
       },
       {
@@ -68,43 +72,43 @@ const sections: {
     ],
   },
   {
-    title: 'Open Source',
+    title: t('footer.section.open-source'),
     links: [
       {
-        label: 'Repository',
+        label: t('footer.link.repository'),
         url: 'https://github.com/papra-hq/papra',
       },
       {
-        label: 'Contributing',
+        label: t('footer.link.contributing'),
         url: 'https://github.com/papra-hq/papra/blob/main/CONTRIBUTING.md',
       },
       {
-        label: 'Code of Conduct',
+        label: t('footer.link.code-of-conduct'),
         url: 'https://github.com/papra-hq/papra/blob/main/CODE_OF_CONDUCT.md',
       },
       {
-        label: 'License',
+        label: t('footer.link.license'),
         url: 'https://github.com/papra-hq/papra/blob/main/LICENSE',
       },
       {
-        label: 'This website',
+        label: t('footer.link.this-website'),
         url: 'https://github.com/papra-hq/papra-website',
       },
     ],
   },
   {
-    title: 'Legal',
+    title: t('footer.section.legal'),
     links: [
       {
-        label: 'Terms of Service',
+        label: t('footer.link.terms-of-service'),
         url: '/terms-of-service',
       },
       {
-        label: 'Privacy Policy',
+        label: t('footer.link.privacy-policy'),
         url: '/privacy',
       },
       {
-        label: 'Contact',
+        label: t('footer.link.contact'),
         url: '/contact',
       },
     ],
@@ -113,9 +117,9 @@ const sections: {
 ---
 
 <footer class="bg-card border-t border-border py-8 text-muted-foreground">
-  <div class="max-w-1000px mx-auto p-4">
+  <div class="max-w-1200px mx-auto p-4">
     <div class="flex justify-between flex-col md:flex-row gap-10">
-      <div>
+      <div class="">
         <a href="/" class="text-xl font-bold flex items-center group mb-2">
           <div class="i-tabler-file-text size-7 text-primary group-hover:(rotate-25deg) transition transform rotate-12deg"></div>
           <span class="ml-2 text-foreground group-hover:text-foreground/80 transition">Papra</span>
@@ -131,13 +135,14 @@ const sections: {
           }
         </div>
 
-        <p class="mt-4 text-sm max-w-250px">
-          Papra is made and hosted in Europe with <span class="i-tabler-heart-filled size-3.5 mb--0.3 text-primary inline-block"></span>
-          by <a href="https://corentin.tech" class="text-primary border-b hover:border-b-primary transition">Corentin Thomasset</a>.
-        </p>
+        <p class="mt-4 text-sm max-w-250px" set:html={t('footer.made-in-europe')} />
+
+        <div class="mt-6">
+          <LanguagePicker />
+        </div>
       </div>
 
-      <div class={cn('grid gap-10 grid-cols-1', `sm:grid-cols-${sections.length}`)}>
+      <div class={cn('grid gap-6 grid-cols-1', `sm:grid-cols-${sections.length}`)}>
         {
           sections.map(section => (
             <div>
@@ -155,8 +160,6 @@ const sections: {
       </div>
     </div>
 
-    <div class="mt-8 border-t border-border pt-4">
-      © {new Date().getFullYear()} Papra. All rights reserved.
-    </div>
+    <div class="mt-8 border-t border-border pt-4" set:html={t('footer.copyright', { year: new Date().getFullYear() })} />
   </div>
 </footer>

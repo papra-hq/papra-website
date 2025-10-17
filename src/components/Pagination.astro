@@ -1,6 +1,9 @@
 ---
 import type { Page } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
+import { useI18n } from '../i18n/i18n';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
 
 export type Props = Omit<HTMLAttributes<'nav'>, 'slot'> & {
   page: Page<unknown>;
@@ -67,7 +70,7 @@ const collapsedPages = collapseRange({ page, pages });
         <li class="rounded-full border">
           <a href={page.url.prev} data-astro-prefetch class="flex h-10 w-10 items-center justify-center">
             <span class="sr-only">
-              Go to page {page.currentPage - 1} of {page.lastPage}
+              {t('pagination.go-to-page', { page: page.currentPage - 1, total: page.lastPage })}
             </span>
             <div class="i-tabler-arrow-left size-6" aria-hidden="true" />
           </a>
@@ -97,14 +100,14 @@ const collapsedPages = collapseRange({ page, pages });
       ))
     }
     <li class="sm:hidden">
-      <p aria-current="page">Page {page.currentPage} of {page.lastPage}</p>
+      <p aria-current="page">{t('pagination.page', { current: page.currentPage, total: page.lastPage })}</p>
     </li>
     {
       page.url.next && (
         <li class="rounded-full border">
           <a href={page.url.next} data-astro-prefetch class="flex h-10 w-10 items-center justify-center">
             <span class="sr-only">
-              Go to page {page.currentPage + 1} of {page.lastPage}
+              {t('pagination.go-to-page', { page: page.currentPage + 1, total: page.lastPage })}
             </span>
             <div class="i-tabler-arrow-right size-6" aria-hidden="true" />
           </a>

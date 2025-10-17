@@ -1,12 +1,10 @@
 ---
 import { cn } from '../utils/cn';
 
-
-
 type Props = {
     title: string;
     description: string;
-    items: {
+    items: readonly {
         question: string;
         answer: string;
     }[];

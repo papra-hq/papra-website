@@ -101,7 +101,7 @@ export default defineConfig({
       },
     },
   },
-  safelist: ['sm:grid-cols-1', 'sm:grid-cols-2', 'sm:grid-cols-3', 'sm:grid-cols-4', 'sm:grid-cols-5'],
+  safelist: ['sm:grid-cols-1', 'sm:grid-cols-2', 'sm:grid-cols-3', 'sm:grid-cols-4', 'sm:grid-cols-5', 'i-tabler-heart-filled'],
   preflights: [
     {
       getCSS: () => `

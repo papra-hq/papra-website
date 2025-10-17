@@ -20,6 +20,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.3.0
+      '@branchlet/core':
+        specifier: ^1.0.0
+        version: 1.0.0
       astro:
         specifier: ^5.7.2
         version: 5.7.2(jiti@2.4.2)(rollup@4.39.0)(tsx@4.19.3)(typescript@5.7.3)(yaml@2.7.1)
@@ -221,6 +224,10 @@ packages:
   '@babel/types@7.27.0':
     resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
+
+  '@branchlet/core@1.0.0':
+    resolution: {integrity: sha512-qEFl0VeaIfdtVxHzIGeTu1HW7rpt4haMCV81YYBoFYTJZUBb0YZ2BN3Z6L2klwQ/6XxGJO61Cm5J6RMOKkvFmA==}
+    engines: {node: '>=22.0.0'}
 
   '@capsizecss/unpack@2.4.0':
     resolution: {integrity: sha512-GrSU71meACqcmIUxPYOJvGKF0yryjN/L1aCuE9DViCTJI7bfkjgYDPD1zbNDcINJwSSP6UaBZY9GAbYDO7re0Q==}
@@ -4558,6 +4565,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@branchlet/core@1.0.0': {}
 
   '@capsizecss/unpack@2.4.0':
     dependencies:
