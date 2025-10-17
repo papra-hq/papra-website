@@ -1,43 +1,22 @@
 ---
-const title = 'Frequently Asked Questions';
-const description = 'Everything you need to know about Papra';
-const items = [
-    {
-        question: 'What is Papra?',
-        answer: 'Papra is an open-source document management platform designed to help you organize, secure, and archive your files effortlessly. It provides a centralized solution for managing all your documents in one place.',
-    },
-    {
-        question: 'Is Papra really open-source?',
-        answer: 'Yes! Papra is completely open-source and available under the AGPL-3.0 license. You can view the source code on GitHub and even self-host it if you prefer.',
-    },
-    {
-        question: 'How does document organization work?',
-        answer: 'Papra uses a combination of organizations, tags, and powerful search functionality to help you organize your documents. You can create organizations for teams or companies, add tags for categorization, and find documents quickly with our search feature.',
-    },
-    {
-        question: 'Can I self-host Papra?',
-        answer: 'Absolutely! Since Papra is open-source, you can self-host it on your own infrastructure. This gives you complete control over your data and allows you to customize the platform to your specific needs.',
-    },
-    {
-        question: 'What file types does Papra support?',
-        answer: 'Papra supports a wide range of document types including PDFs, text files, code files, invoices, spreadsheets, and many more. The platform is designed to handle various file formats commonly used in business and personal document management.',
-    },
-    {
-        question: 'Are my documents secure?',
-        answer: 'Yes! Papra uses industry-standard in-transit and at-rest encryption to protect your documents.',
-    },
-    {
-        question: 'Are my data stored in Europe?',
-        answer: 'Yes! Papra is hosted in Europe and all data is stored in Europe.',
-    },
-    {
-        question: 'How can I get started with Papra?',
-        answer: 'Getting started with Papra is easy! Simply sign up for a free account, upload your documents, and start organizing them. You can also check out our documentation for more detailed instructions on how to use the platform.',
-    },
-];
+import { cn } from '../utils/cn';
+
+
+
+type Props = {
+    title: string;
+    description: string;
+    items: {
+        question: string;
+        answer: string;
+    }[];
+    class?: string;
+};
+
+const { title, description, items, class: className } = Astro.props;
 ---
 
-<div class="max-w-800px mx-auto px-6 py-42">
+<div class={cn(`max-w-800px mx-auto px-6 py-42`, className)}>
     <h2 class="text-3xl font-semibold text-pretty mb-4 text-center">{title}</h2>
     <p class="text-muted-foreground text-lg text-center mb-24">{description}</p>
 

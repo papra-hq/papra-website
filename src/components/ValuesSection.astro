@@ -1,0 +1,59 @@
+---
+const values = [
+  {
+    icon: 'i-tabler-heart-handshake',
+    title: 'Ethical by Design',
+    description: 'No dark patterns, no manipulative tactics. We build software that respects you.',
+  },
+  {
+    icon: 'i-tabler-building-bank',
+    title: 'Bootstrapped & Independent',
+    description: 'No VC funding, no diluted financing, debt-free. We answer to our users, not investors.',
+  },
+  {
+    icon: 'i-tabler-shield-lock',
+    title: 'Your Data is Yours',
+    description: 'We never sell your data. Period. Privacy is a right, not a feature.',
+  },
+  {
+    icon: 'i-tabler-brand-open-source',
+    title: 'Fully Open Source',
+    description: 'Complete transparency. Audit our code, contribute, or self-host anytime.',
+  },
+  {
+    icon: 'i-tabler-trees',
+    title: 'Environmentally Conscious',
+    description: 'We prioritize sustainability and eco-friendliness in our operations and product design.',
+  },
+  {
+    icon: 'i-tabler-users',
+    title: 'Community-Driven',
+    description: 'Built with and for the community. Your feedback shapes our roadmap.',
+  },
+];
+---
+
+<section class="py-32 border-t bg-background relative overflow-hidden">
+  <div class="z-10 bg-primary w-80% max-w-800px h-300px rounded-full blur-96 op-10 absolute top-50% left-50% -translate-x-50% -translate-y-50%"></div>
+
+  <div class="max-w-1200px mx-auto px-6 relative z-20">
+    <div class="text-center mb-24">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Built on Principles, Not Profit</h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        We're committed to building software the right way. <br /> No shortcuts, no compromises.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        values.map(value => (
+          <div class="border rounded-xl p-6 bg-card group">
+            <div class={`${value.icon} size-10 text-primary mb-4 group-hover:(scale-105 rotate-12) transition transform`} />
+            <h3 class="text-xl font-bold mb-1">{value.title}</h3>
+            <p class="text-muted-foreground">{value.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

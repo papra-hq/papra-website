@@ -1,0 +1,50 @@
+---
+import { config } from '../app.config';
+---
+
+<a
+  class="launch-banner bg-primary text-primary-foreground py-3 px-6 text-center text-sm font-semibold flex items-center justify-center gap-6"
+  role="alert"
+  href={config.getStartedLink}
+  target="_blank"
+  rel="noopener"
+>
+  <span class="flex items-center">
+    <span class="i-tabler-speakerphone size-5.5 align-middle hidden sm:inline-block mr-1 flex-shrink-0"></span>
+    <span>
+      Launch Special: Get {config.launchDiscount.percentage}% off <span class="underline">lifetime</span> - Offer ends <span
+        class="end-date"
+        data-end-date={config.launchDiscount.endsAt.toISOString()}
+                                                                                                                       >{config.launchDiscount.endsAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span
+      >
+    </span>
+  </span>
+</a>
+
+<script>
+  (() => {
+    // Replace the end date text with a countdown in days if the date is in the future
+    const endDateElement = document.querySelector('.end-date');
+
+    if (endDateElement) {
+      const endDate = new Date(endDateElement.getAttribute('data-end-date')!);
+      const now = new Date();
+      if (endDate < now) {
+        document.querySelector('.launch-banner')?.remove();
+        return;
+      }
+
+      const diff = endDate.getTime() - now.getTime();
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.ceil(diff / (1000 * 60 * 60));
+
+      if (days > 0) {
+        endDateElement.textContent = `in ${days} day${days !== 1 ? 's' : ''}`;
+        return;
+      }
+      if (hours > 0) {
+        endDateElement.textContent = `in ${hours} hour${hours !== 1 ? 's' : ''}`;
+      }
+    }
+  })();
+</script>
