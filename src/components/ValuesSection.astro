@@ -1,34 +1,39 @@
 ---
+import { useI18n } from '../i18n/i18n';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
+
+
 const values = [
   {
     icon: 'i-tabler-heart-handshake',
-    title: 'Ethical by Design',
-    description: 'No dark patterns, no manipulative tactics. We build software that respects you.',
+    title: t('values.ethical-by-design.title'),
+    description: t('values.ethical-by-design.description'),
   },
   {
     icon: 'i-tabler-building-bank',
-    title: 'Bootstrapped & Independent',
-    description: 'No VC funding, no diluted financing, debt-free. We answer to our users, not investors.',
+    title: t('values.bootstrapped-and-independent.title'),
+    description: t('values.bootstrapped-and-independent.description'),
   },
   {
     icon: 'i-tabler-shield-lock',
-    title: 'Your Data is Yours',
-    description: 'We never sell your data. Period. Privacy is a right, not a feature.',
+    title: t('values.your-data-is-yours.title'),
+    description: t('values.your-data-is-yours.description'),
   },
   {
     icon: 'i-tabler-brand-open-source',
-    title: 'Fully Open Source',
-    description: 'Complete transparency. Audit our code, contribute, or self-host anytime.',
+    title: t('values.fully-open-source.title'),
+    description: t('values.fully-open-source.description'),
   },
   {
     icon: 'i-tabler-trees',
-    title: 'Environmentally Conscious',
-    description: 'We prioritize sustainability and eco-friendliness in our operations and product design.',
+    title: t('values.environmentally-conscious.title'),
+    description: t('values.environmentally-conscious.description'),
   },
   {
     icon: 'i-tabler-users',
-    title: 'Community-Driven',
-    description: 'Built with and for the community. Your feedback shapes our roadmap.',
+    title: t('values.community-driven.title'),
+    description: t('values.community-driven.description'),
   },
 ];
 ---
@@ -38,10 +43,8 @@ const values = [
 
   <div class="max-w-1200px mx-auto px-6 relative z-20">
     <div class="text-center mb-24">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Built on Principles, Not Profit</h2>
-      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-        We're committed to building software the right way. <br /> No shortcuts, no compromises.
-      </p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('values.title')}</h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto" set:html={t('values.subtitle')} />
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

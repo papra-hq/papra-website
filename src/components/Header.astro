@@ -1,6 +1,9 @@
 ---
 import { config, requestEarlyAccessLink } from '../app.config';
+import { useI18n } from '../i18n/i18n';
 import { cn } from '../utils/cn';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
 
 const socials = [
   {
@@ -22,25 +25,25 @@ const socials = [
 
 const navigation = [
   {
-    name: 'Demo',
+    name: t('nav.demo'),
     url: 'https://demo.papra.app',
   },
   {
-    name: 'Docs',
+    name: t('nav.docs'),
     url: 'https://docs.papra.app',
   },
   {
-    name: 'Blog',
+    name: t('nav.blog'),
     url: '/blog',
   },
   {
-    name: 'Self-host',
+    name: t('nav.self-host'),
     url: 'https://docs.papra.app/self-hosting/using-docker/',
   },
   ...(config.isLaunched
 ? [
   {
-    name: 'Pricing',
+    name: t('nav.pricing'),
     url: '/pricing',
   },
 ]
@@ -88,7 +91,7 @@ const { class: className } = Astro.props;
       href={config.getStartedLink}
       target="_blank"
     >
-      {config.getStartedLink === requestEarlyAccessLink ? 'Early Access' : 'Get Started'}
+      {config.getStartedLink === requestEarlyAccessLink ? t('nav.early-access') : t('nav.sign-in')}
       <div class="i-tabler-arrow-right size-4"></div>
     </a>
   </div>

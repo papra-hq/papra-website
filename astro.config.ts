@@ -7,6 +7,7 @@ import { defineConfig } from 'astro/config';
 import UnoCSS from 'unocss/astro';
 import { config } from './src/app.config';
 
+import { DEFAULT_LOCALE, LOCALES } from './src/i18n/i18n.constants';
 import createRedirectsFile from './src/plugins/redirects';
 
 export default defineConfig({
@@ -41,4 +42,13 @@ export default defineConfig({
 
   output: 'static',
   adapter: cloudflare(),
+
+  i18n: {
+    locales: LOCALES.map(locale => locale), // Because astro expects string[] and not readonly string[]
+    defaultLocale: DEFAULT_LOCALE,
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
+    },
+  },
 });

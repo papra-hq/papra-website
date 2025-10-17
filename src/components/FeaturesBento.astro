@@ -1,7 +1,10 @@
 ---
 import { Code } from 'astro:components';
+import { useI18n } from '../i18n/i18n';
 import { cn } from '../utils/cn';
 import BentoCard from './BentoCard.astro';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
 
 const filesIcons = [
   'i-tabler-file',
@@ -22,132 +25,126 @@ const filesIcons = [
 
 const getRandomIcon = () => filesIcons[Math.floor(Math.random() * filesIcons.length)];
 
-
 const codeSnippet = `
 curl -X POST https://api.papra.ai/v1/documents \\
   -H "Authorization: Bearer $PAPRA_API_KEY" \\
   -H "Content-Type: multipart/form-data" \\
   -F "file=@/path/to/your/file.pdf"
 `.trim();
-
-
-
 ---
 
 <div class="pt-32 pb-48 bg-card p-6 relative overflow-hidden">
   <!-- <div class="z-10 bg-primary w-90% max-w-1000px h-60px rounded-full blur-64 op-15 absolute bottom--50px left-50% -translate-x-50% "></div> -->
 
-  <h2 class="text-3xl font-semibold text-pretty mb-2 text-center">
-    Some Features
-  </h2>
+  <h2 class="text-3xl font-semibold text-pretty mb-2 text-center">{t('features.title')}</h2>
   <p class="text-base text-muted-foreground text-center max-w-500px mx-auto mb-24">
-    Manage your documents with ease. Papra offers a range of features to help you organize, search, and access your documents effortlessly.
+    {t('features.subtitle')}
   </p>
 
   <div class="max-w-1000px mx-auto flex flex-col sm:flex-row gap-4 items-start">
-
     <div class="flex flex-col gap-4 w-full">
-
       <BentoCard
-        title="All your documents in one place"
-        description="Say goodbye to scattered documents across different platforms. Papra helps you archive and organize all your documents in one place."
+        title={t('features.all-in-one.title')}
+        description={t('features.all-in-one.description')}
         icon="i-tabler-archive"
       >
-      <div class="grid grid-cols-8 grid-rows-2 gap-4 p-6 overflow-hidden mb--150px">
-        {Array.from({ length: 24 }).map(() => <div class={cn('size-8 sm:size-10 text-muted text-center', getRandomIcon())} />)}
-      </div>
-    </BentoCard>
+        <div class="grid grid-cols-8 grid-rows-2 gap-4 p-6 overflow-hidden mb--150px">
+          {Array.from({ length: 24 }).map(() => <div class={cn('size-8 sm:size-10 text-muted text-center', getRandomIcon())} />)}
+        </div>
+      </BentoCard>
 
-    <BentoCard
-      title="Organizations"
-      description="Organize your documents into organizations. Organizations help you manage your documents and users, like a team or a company."
-      icon="i-tabler-building-community"
-    >
-    <div class="flex items-center gap-2 p-6 pt-10 pb-4 justify-center">
-      <div class="border rounded-xl p-3 flex items-center justify-center">
-        <span class="i-tabler-users size-6 text-muted-foreground"></span>
-      </div>
+      <BentoCard
+        title={t('features.organizations.title')}
+        description={t('features.organizations.description')}
+        icon="i-tabler-building-community"
+      >
+        <div class="flex items-center gap-2 p-6 pt-10 pb-4 justify-center">
+          <div class="border rounded-xl p-3 flex items-center justify-center">
+            <span class="i-tabler-users size-6 text-muted-foreground"></span>
+          </div>
 
-      <div class="bg-muted-foreground h-3px w-20px rounded-full">
-      </div>
+          <div class="bg-muted-foreground h-3px w-20px rounded-full"></div>
 
-      <div class="border rounded-xl p-3 flex items-center justify-center border-primary border-2">
-        <span class="i-tabler-user text-primary size-6"></span>
-      </div>
+          <div class="border rounded-xl p-3 flex items-center justify-center border-primary border-2">
+            <span class="i-tabler-user text-primary size-6"></span>
+          </div>
 
-      <div class="bg-muted-foreground h-3px w-20px rounded-full">
-      </div>
+          <div class="bg-muted-foreground h-3px w-20px rounded-full"></div>
 
-      <div class="border rounded-xl p-3 flex items-center justify-center">
-        <span class="i-tabler-users size-6 text-muted-foreground"></span>
-      </div>
+          <div class="border rounded-xl p-3 flex items-center justify-center">
+            <span class="i-tabler-users size-6 text-muted-foreground"></span>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title={t('features.tagging.title')}
+        description={t('features.tagging.description')}
+        icon="i-tabler-tag"
+      >
+        <div class="mt-6"></div>
+      </BentoCard>
     </div>
-  </BentoCard>
-
-
-<BentoCard title="Documents tagging" description="Organize your documents with tags. Tags help you categorize and filter your documents easily. Define tagging rules to automatically tag your documents." icon="i-tabler-tag">
-  <div class="mt-6" />
-</BentoCard>
-
-  </div>
 
     <div class="flex flex-col gap-4 w-full">
       <BentoCard
-        title="Search and find documents easily"
-        description="With Papra's powerful search functionality, you can find any document in seconds. No more endless scrolling and searching."
+        title={t('features.search.title')}
+        description={t('features.search.description')}
         icon="i-tabler-search"
       >
-        <div class="mb--180px flex items-start justify-center pt-6 relative">
+        <div class="mb--180px flex items-start justify-center pt-6 relative" role="img" aria-label="Search feature illustration">
           <div class="bg-background sm:min-w-64 border rounded-lg">
             <div class="px-4 py-2 flex items-center gap-2">
               <span class="i-tabler-search size-4 text-primary"></span>
-              <span class="text-muted-foreground text-xs">Search for documents...</span>
+              <span class="text-muted-foreground text-xs">{t('features.search.placeholder')}</span>
             </div>
 
             <div class="border-t p-4 text-xs text-muted-foreground">
               <div class="flex items-center gap-2">
                 <span class="i-tabler-file-text size-4"></span>
-                Phone invoice.pdf
+                {t('features.search.example-1')}
               </div>
 
               <div class="flex items-center gap-2 mt-2">
                 <span class="i-tabler-file-analytics size-4"></span>
-                Analytics report.pdf
+                {t('features.search.example-2')}
               </div>
 
               <div class="flex items-center gap-2 mt-2">
                 <span class="i-tabler-file-code size-4"></span>
-                Code snippets.txt
+                {t('features.search.example-3')}
               </div>
 
               <div class="flex items-center gap-2 mt-2">
                 <span class="i-tabler-file size-4"></span>
-                Document.docx
+                {t('features.search.example-4')}
               </div>
             </div>
           </div>
         </div>
       </BentoCard>
 
-      <BentoCard title="Developer friendly" description="Papra is built with customizability in mind. We provide a powerful API, webhooks, CLI and SDK to help you integrate Papra into your existing workflow." icon="i-tabler-code">
+      <BentoCard
+        title={t('features.developer-friendly.title')}
+        description={t('features.developer-friendly.description')}
+        icon="i-tabler-code"
+      >
         <div class="flex justify-center p-6">
-          <Code code={codeSnippet} lang="bash" theme="vitesse-dark" class="text-xs bg-transparent!" />
+          <Code code={codeSnippet} lang="bash" theme="vitesse-dark" class="text-xs bg-transparent!" role="presentation" />
         </div>
       </BentoCard>
 
-
       <BentoCard
-        title="Email ingestion"
-        description="Generate a unique email address and forward your emails to Papra. We'll automatically save your email attachments as documents."
+        title={t('features.email-ingestion.title')}
+        description={t('features.email-ingestion.description')}
         icon="i-tabler-mail"
       >
-    <div class="flex items-center gap-4 p-6 pt-10 pb-4 justify-center">
-        <span class="i-tabler-file-text size-10 text-muted-foreground"></span>
-        <span class="i-tabler-arrow-right size-6 text-muted-foreground"></span>
-        <span class="i-tabler-mailbox size-10 text-primary"></span>
-    </div>
-  </BentoCard>
-
+        <div class="flex items-center gap-4 p-6 pt-10 pb-4 justify-center">
+          <span class="i-tabler-file-text size-10 text-muted-foreground"></span>
+          <span class="i-tabler-arrow-right size-6 text-muted-foreground"></span>
+          <span class="i-tabler-mailbox size-10 text-primary"></span>
+        </div>
+      </BentoCard>
     </div>
   </div>
 </div>
