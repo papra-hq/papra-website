@@ -1,4 +1,4 @@
-const isLaunched = false;
+const isLaunched = true;
 
 export const requestEarlyAccessLink = 'https://tally.so/r/npz6BE';
 const getStartedLink = 'https://dashboard.papra.app';
