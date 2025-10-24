@@ -1,5 +1,5 @@
 ---
-import { useI18n } from '../i18n/i18n';
+import { buildLocalizedPath, useI18n } from '../i18n/i18n';
 import { cn } from '../utils/cn';
 import LanguagePicker from './LanguagePicker.astro';
 
@@ -39,6 +39,10 @@ const sections: {
   {
     title: t('footer.section.papra'),
     links: [
+      {
+        label: t('footer.link.pricing'),
+        url: buildLocalizedPath({ locale: Astro.currentLocale, path: '/pricing' }),
+      },
       {
         label: t('footer.link.blog'),
         url: '/blog',
@@ -109,7 +113,7 @@ const sections: {
       },
       {
         label: t('footer.link.contact'),
-        url: '/contact',
+        url: buildLocalizedPath({ locale: Astro.currentLocale, path: '/contact' }),
       },
     ],
   },

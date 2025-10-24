@@ -1,5 +1,6 @@
 import type { TranslationsDictionary } from './i18n.types';
 import { createBranchlet } from '@branchlet/core';
+import { joinUrlPaths } from '@corentinth/chisels';
 import { translations } from '../locales/index';
 import { DEFAULT_LOCALE, LOCALES } from './i18n.constants';
 
@@ -58,4 +59,8 @@ export function getPathWithoutLocale(url: URL | string) {
   }
 
   return pathname;
+}
+
+export function buildLocalizedPath({ locale = DEFAULT_LOCALE, path }: { locale?: string; path: string }) {
+  return `/${joinUrlPaths(locale, path)}`;
 }

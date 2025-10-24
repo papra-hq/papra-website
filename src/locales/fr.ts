@@ -74,6 +74,7 @@ export const translations: Partial<TranslationsDictionary> = {
 
   // Footer - Papra links
   'footer.link.blog': 'Blog',
+  'footer.link.pricing': 'Tarifs',
   'footer.link.demo-app': 'Application démo',
   'footer.link.documentation': 'Documentation',
   'footer.link.self-host': 'Auto-hébergement',
@@ -230,6 +231,8 @@ export const translations: Partial<TranslationsDictionary> = {
   // Pricing Page - Final CTA
   'pricing.final-cta.title': 'Ils nous font confiance : particuliers, startups et entreprises.',
   'pricing.final-cta.button': 'Commencer',
+  'pricing.discount-banner.title': 'Offre de Lancement : -50% à vie',
+  'pricing.discount-banner.description': 'Bénéficiez de 50% de réduction à vie en passant vos organisations à n\'importe quel plan payant pendant notre période de lancement. Cette offre expire le 31 décembre 2025 !',
 
   // Contact Page
   'contact.title': 'Contact',

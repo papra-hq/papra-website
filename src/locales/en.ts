@@ -72,6 +72,7 @@ export const translations = {
 
   // Footer - Papra links
   'footer.link.blog': 'Blog',
+  'footer.link.pricing': 'Pricing',
   'footer.link.demo-app': 'Demo app',
   'footer.link.documentation': 'Documentation',
   'footer.link.self-host': 'Self-host',
@@ -228,6 +229,8 @@ export const translations = {
   // Pricing Page - Final CTA
   'pricing.final-cta.title': 'Trusted by homes, startups, and enterprises of all sizes.',
   'pricing.final-cta.button': 'Get started',
+  'pricing.discount-banner.title': 'Launch Special: Get 50% off lifetime',
+  'pricing.discount-banner.description': 'Get 50% off forever when you upgrade your organization to any paid plan during our launch period. This offer expires on 31 December 2025!',
 
   // Contact Page
   'contact.title': 'Contact',
