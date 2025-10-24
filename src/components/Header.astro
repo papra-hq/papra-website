@@ -1,6 +1,6 @@
 ---
 import { config, requestEarlyAccessLink } from '../app.config';
-import { useI18n } from '../i18n/i18n';
+import { buildLocalizedPath, useI18n } from '../i18n/i18n';
 import { cn } from '../utils/cn';
 
 const { t } = useI18n({ locale: Astro.currentLocale });
@@ -44,7 +44,7 @@ const navigation = [
 ? [
   {
     name: t('nav.pricing'),
-    url: '/pricing',
+    url: buildLocalizedPath({ locale: Astro.currentLocale, path: '/pricing' }),
   },
 ]
 : []),
