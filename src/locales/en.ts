@@ -60,6 +60,7 @@ export const translations = {
 
   // Footer - Social links
   'footer.social.bluesky': 'Bluesky',
+  'footer.social.x': 'X / Twitter',
   'footer.social.github': 'GitHub',
   'footer.social.discord': 'Discord',
   'footer.social.reddit': 'Reddit',
@@ -243,6 +244,8 @@ export const translations = {
   'contact.option.github.label': 'Papra Github repository',
   'contact.option.bluesky.name': 'Bluesky',
   'contact.option.bluesky.label': 'Bluesky profile',
+  'contact.option.x.name': 'X / Twitter',
+  'contact.option.x.label': 'Papra X profile',
 
   // Blog Page
   'blog.title': 'Papra Blog',
