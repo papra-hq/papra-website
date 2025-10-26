@@ -245,6 +245,8 @@ export const translations: Partial<TranslationsDictionary> = {
   'contact.option.github.label': 'Dépôt Github Papra',
   'contact.option.bluesky.name': 'Bluesky',
   'contact.option.bluesky.label': 'Profil Bluesky',
+  'contact.option.x.name': 'X / Twitter',
+  'contact.option.x.label': 'Profil Papra sur X',
 
   // Blog Page
   'blog.title': 'Blog Papra',

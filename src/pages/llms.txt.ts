@@ -24,6 +24,7 @@ ${posts.map(post => `- [${post.data.title}](${getBlogPostUrl(post.slug)}): ${pos
 - [Papra GitHub](https://github.com/papra-hq/papra): The source code for Papra.
 - [Papra Discord](https://papra.app/discord): The official Discord server for Papra.
 - [Bluesky account](https://bsky.app/profile/papra.app): The official Bluesky account for Papra @papra.app.
+- [X / Twitter account](https://x.com/papra_app): The official X account for Papra @papra_app.
 - [Support the project](https://buymeacoffee.com/cthmsst): Support the project by sponsoring the developer.
 - [Contact](https://papra.app/contact): Contact the development team.
 
