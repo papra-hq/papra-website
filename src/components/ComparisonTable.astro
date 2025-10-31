@@ -27,7 +27,7 @@ const { rows, class: className } = Astro.props;
     </thead>
     <tbody>
       {rows.map((row, index) => (
-        <tr class="bg-card transition-colors hover:bg-muted/20   border-t">
+        <tr class="bg-card transition-colors hover:bg-muted/20 border-t">
           <td class="px-6 py-5">
               <div class="font-medium text-foreground">{row.feature}</div>
               {row.description && (<div class="text-sm text-muted-foreground">{row.description}</div>)}
