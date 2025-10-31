@@ -230,8 +230,8 @@ export const translations = {
   // Pricing Page - Final CTA
   'pricing.final-cta.title': 'Trusted by homes, startups, and enterprises of all sizes.',
   'pricing.final-cta.button': 'Get started',
-  'pricing.discount-banner.title': 'Launch Special: Get 50% off lifetime',
-  'pricing.discount-banner.description': 'Get 50% off forever when you upgrade your organization to any paid plan during our launch period. This offer expires on 31 December 2025!',
+  'pricing.discount-banner.title': 'Launch Special: 50% off for life - limited time offer!',
+  'pricing.discount-banner.description': 'Get 50% off for life when you upgrade your organization to any paid plan during our launch period. This offer expires on 31 December 2025!',
 
   // Contact Page
   'contact.title': 'Contact',
@@ -267,7 +267,7 @@ export const translations = {
   'nav.sign-in': 'Sign In',
 
   // Launch Banner
-  'launch-banner.text': 'Launch Special: Get {{percentage}}% off lifetime - Limited time offer!',
+  'launch-banner.text': 'Launch Special: Get {{percentage}}% off for life - Limited time offer!',
 
   // Pagination
   'pagination.go-to-page': 'Go to page {{page}} of {{total}}',
