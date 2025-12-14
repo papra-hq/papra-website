@@ -64,6 +64,7 @@ export const translations = {
   'footer.social.github': 'GitHub',
   'footer.social.discord': 'Discord',
   'footer.social.reddit': 'Reddit',
+  'footer.social.linkedin': 'LinkedIn',
 
   // Footer - Sections
   'footer.section.community': 'Community',
