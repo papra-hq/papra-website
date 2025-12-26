@@ -21,7 +21,10 @@ export async function getStaticPaths() {
 const { t } = useI18n({ locale: Astro.currentLocale });
 ---
 
-<Layout>
+<Layout
+  rawTitle={t('site.title')}
+  description={t('site.description')}
+>
   {discount.enabled && <LaunchBanner />}
 
   <div class="relative overflow-hidden pb-300px bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px]">

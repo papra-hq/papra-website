@@ -1,6 +1,9 @@
 export const translations = {
   'language-name': 'English',
 
+  'site.title': 'Papra - The document archiving platform',
+  'site.description': 'Papra is an open-source platform to organize, secure, and archive all your documents, effortlessly. Start digitizing your life today!',
+
   // Call to Action Section
   'cta.get-started': 'Get Started',
   'cta.heading': 'Stop searching. Start finding.<br /> Organize your documents with Papra.',

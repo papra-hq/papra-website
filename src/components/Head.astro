@@ -1,9 +1,12 @@
 ---
 import { Head as CapoHead } from 'astro-capo';
-import { getPathWithoutLocale } from '../i18n/i18n';
+import { getPathWithoutLocale, useI18n } from '../i18n/i18n';
 import { DEFAULT_LOCALE, LOCALES } from '../i18n/i18n.constants';
 import { formatCanonicalUrl } from '../utils/urls';
 import PosthogAnalytics from './PosthogAnalytics.astro';
+
+const { t } = useI18n({ locale: Astro.currentLocale });
+
 
 export type Props = {
   title?: string;
@@ -19,10 +22,10 @@ export type Props = {
 
 const siteInfo = {
   name: 'Papra',
-  title: 'Papra - Simple & Secure Document Archiving for Long-Term Storage',
+  title: t('site.title'),
   rootUrl: 'https://papra.app',
-  description: 'Store and archive receipts, warranties, and important docs with Papra, a simple and accessible platform for long-term document management and retrieval.',
-  image: { src: '/og/papra.png', alt: 'Papra - Simple & Secure Document Archiving for Long-Term Storage' },
+  description: t('site.description'),
+  image: { src: '/og/papra.png', alt: t('site.title') },
   author: 'Corentin Thomasset',
 };
 
