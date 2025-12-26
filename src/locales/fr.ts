@@ -4,7 +4,7 @@ export const translations: Partial<TranslationsDictionary> = {
   'language-name': 'Français',
 
   'site.title': 'Papra - La plateforme d\'archivage de documents',
-  'site.description': 'Papra est une plateforme open-source pour organiser, sécuriser et archiver tous vos documents, sans effort. Commencez a digitaliser votre vie dès aujourd\'hui !',
+  'site.description': 'Papra est une plateforme open-source pour organiser, sécuriser et archiver tous vos documents, sans effort. Commencez à digitaliser votre vie dès aujourd\'hui !',
 
   // Call to Action Section
   'cta.get-started': 'Commencer',
