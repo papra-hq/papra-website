@@ -268,7 +268,7 @@ export const translations = {
   'nav.sign-in': 'Sign In',
 
   // Launch Banner
-  'launch-banner.text': 'Launch Special: Get {{percentage}}% off for life - Limited time offer!',
+  'launch-banner.text': 'Last Chance: {{percentage}}% off for life - Offer expires December 31st, 2025!',
 
   // Pagination
   'pagination.go-to-page': 'Go to page {{page}} of {{total}}',

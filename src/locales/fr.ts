@@ -269,7 +269,7 @@ export const translations: Partial<TranslationsDictionary> = {
   'nav.sign-in': 'Connexion',
 
   // Launch Banner
-  'launch-banner.text': 'Offre de lancement : {{percentage}}% de réduction à vie - Offre limitée !',
+  'launch-banner.text': 'Dernière chance : {{percentage}}% de réduction à vie - Expire le 31 décembre 2025 !',
 
   // Pagination
   'pagination.go-to-page': 'Aller à la page {{page}} sur {{total}}',
