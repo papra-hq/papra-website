@@ -3,7 +3,6 @@ import { config } from '../../app.config';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
-import LaunchBanner from '../../components/LaunchBanner.astro';
 import { useI18n } from '../../i18n/i18n';
 import { LOCALES } from '../../i18n/i18n.constants';
 import Layout from '../../layouts/Layout.astro';
@@ -13,7 +12,6 @@ export async function getStaticPaths() {
 }
 
 const { t } = useI18n({ locale: Astro.currentLocale });
-const discount = config.launchDiscount;
 
 type Plan = {
   name: string;
@@ -69,23 +67,12 @@ const plans: Plan[] = [
       url: config.getStartedLink,
     },
   },
-].map((plan) => {
-  if (discount.enabled && plan.monthlyPrice > 0) {
-    const discountMultiplier = 1 - discount.percentage / 100;
-    return {
-      ...plan,
-      discountedMonthlyPrice: plan.monthlyPrice * discountMultiplier,
-      discountedAnnualPrice: plan.annualPrice * discountMultiplier,
-    };
-  }
-  return plan;
-});
+];
 ---
 
 <Layout>
-  {discount.enabled && <LaunchBanner />}
   <div class="bg-card flex flex-col w-full min-h-screen relative">
-    <Header class={discount.enabled ? 'absolute! top-0' : undefined} />
+    <Header />
 
     <div class="w-full bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] bg-background border-b pt-32 pb-24">
       <div class="max-w-700px mx-auto p-4 text-center">
@@ -107,31 +94,12 @@ const plans: Plan[] = [
         </p>
       </div>
 
-      {discount.enabled && (
-     <div class="mb-8 bg-gradient-to-r from-primary/20 to-primary/2 border border-primary/30 rounded-lg p-4 flex-shrink-0">
-            <div class="flex items-center gap-4">
-              <div class="p-2.5 bg-primary/20 rounded-lg border border-primary/30 flex-shrink-0">
-                <div class="i-tabler-gift size-6 text-primary"></div>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-base font-semibold text-foreground">{t('pricing.discount-banner.title')}</h4>
-                <p class="text-sm text-muted-foreground mb-1" set:html={t('pricing.discount-banner.description')} />
-              </div>
-            </div>
-          </div>
-
-      )}
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {
           plans.map(plan => (
             <div class={`relative border rounded-xl bg-background p-6 flex flex-col ${plan.popular ? 'border-primary' : ''}`}>
               <div class="flex gap-2 absolute top--3 right-6">
-                {discount.enabled && plan.discountedMonthlyPrice !== undefined && (
-                  <div class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                    {discount.percentage}% OFF
-                  </div>
-                )}
                 {plan.popular && <div class="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">{t('pricing.most-popular')}</div>}
               </div>
 
