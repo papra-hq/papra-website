@@ -7,13 +7,11 @@ import FaqAccordion from '../../components/FaqAccordion.astro';
 import FeaturesBento from '../../components/FeaturesBento.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
-import LaunchBanner from '../../components/LaunchBanner.astro';
 import ValuesSection from '../../components/ValuesSection.astro';
 import { useI18n } from '../../i18n/i18n';
 import { LOCALES } from '../../i18n/i18n.constants';
 import Layout from '../../layouts/Layout.astro';
 
-const discount = config.launchDiscount;
 
 export async function getStaticPaths() {
     return LOCALES.map(locale => ({ params: { locale } }));
@@ -25,13 +23,12 @@ const { t } = useI18n({ locale: Astro.currentLocale });
   rawTitle={t('site.title')}
   description={t('site.description')}
 >
-  {discount.enabled && <LaunchBanner />}
 
   <div class="relative overflow-hidden pb-300px bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px]">
     <div class="z-9 bg-gradient-to-b from-background to-transparent w-full h-full absolute top-0 left-0"></div>
     <div class="z-10 bg-primary w-80% max-w-1000px h-400px rounded-xl blur-64 op-20 absolute bottom--100px left-50% -translate-x-50%"></div>
 
-    <Header class={discount.enabled ? 'absolute! top-0' : undefined} />
+    <Header />
 
     <div class="max-w-3xl mx-auto pt-20 pb-32 px-4 mt-24 text-center z-50 relative">
       <h1 class="text-4xl font-bold mb-4 text-pretty">{t('home.hero.title')}</h1>
