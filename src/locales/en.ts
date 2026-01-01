@@ -250,6 +250,8 @@ export const translations = {
   'contact.option.bluesky.label': 'Bluesky profile',
   'contact.option.x.name': 'X / Twitter',
   'contact.option.x.label': 'Papra X profile',
+  'contact.option.reddit.name': 'Reddit',
+  'contact.option.reddit.label': 'r/papra community',
 
   // Blog Page
   'blog.title': 'Papra Blog',
