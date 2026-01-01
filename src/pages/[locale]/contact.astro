@@ -38,6 +38,12 @@ const contactOptions = [
     icon: 'i-tabler-brand-bluesky',
   },
   {
+    name: t('contact.option.mastodon.name'),
+    label: t('contact.option.mastodon.label'),
+    href: 'https://mastodon.social/@papra',
+    icon: 'i-tabler-brand-mastodon',
+  },
+  {
     name: t('contact.option.x.name'),
     label: t('contact.option.x.label'),
     href: 'https://x.com/papra_app',
@@ -48,6 +54,12 @@ const contactOptions = [
     label: t('contact.option.reddit.label'),
     href: 'https://www.reddit.com/r/Papra/',
     icon: 'i-tabler-brand-reddit',
+  },
+  {
+    name: t('contact.option.linkedin.name'),
+    label: t('contact.option.linkedin.label'),
+    href: 'https://www.linkedin.com/company/109538750',
+    icon: 'i-tabler-brand-linkedin',
   },
 ];
 ---
@@ -63,7 +75,7 @@ const contactOptions = [
       </div>
     </div>
 
-    <div class="max-w-md mx-auto flex-1 w-full flex flex-col gap-4 px-6 py-16">
+    <div class="max-w-3xl mx-auto flex-1 w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-24">
         {
           contactOptions.map(option => (
             <a href={option.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 border rounded-lg bg-background p-4 hover:(border-primary) transition">

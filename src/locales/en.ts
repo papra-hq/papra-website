@@ -68,6 +68,7 @@ export const translations = {
   'footer.social.discord': 'Discord',
   'footer.social.reddit': 'Reddit',
   'footer.social.linkedin': 'LinkedIn',
+  'footer.social.mastodon': 'Mastodon',
 
   // Footer - Sections
   'footer.section.community': 'Community',
@@ -252,6 +253,10 @@ export const translations = {
   'contact.option.x.label': 'Papra X profile',
   'contact.option.reddit.name': 'Reddit',
   'contact.option.reddit.label': 'r/papra community',
+  'contact.option.linkedin.name': 'LinkedIn',
+  'contact.option.linkedin.label': 'Papra LinkedIn profile',
+  'contact.option.mastodon.name': 'Mastodon',
+  'contact.option.mastodon.label': 'Papra Mastodon profile',
 
   // Blog Page
   'blog.title': 'Papra Blog',

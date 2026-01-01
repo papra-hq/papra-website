@@ -69,6 +69,7 @@ export const translations: Partial<TranslationsDictionary> = {
   'footer.social.discord': 'Discord',
   'footer.social.reddit': 'Reddit',
   'footer.social.linkedin': 'LinkedIn',
+  'footer.social.mastodon': 'Mastodon',
 
   // Footer - Sections
   'footer.section.community': 'Communauté',
@@ -253,6 +254,10 @@ export const translations: Partial<TranslationsDictionary> = {
   'contact.option.x.label': 'Profil Papra sur X',
   'contact.option.reddit.name': 'Reddit',
   'contact.option.reddit.label': 'Communauté r/papra',
+  'contact.option.linkedin.name': 'LinkedIn',
+  'contact.option.linkedin.label': 'Profil LinkedIn Papra',
+  'contact.option.mastodon.name': 'Mastodon',
+  'contact.option.mastodon.label': 'Profil Mastodon Papra',
 
   // Blog Page
   'blog.title': 'Blog Papra',

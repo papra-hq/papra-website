@@ -12,6 +12,11 @@ const socials = [
     icon: 'i-tabler-brand-bluesky',
   },
   {
+    name: 'Mastodon',
+    url: 'https://mastodon.social/@papra',
+    icon: 'i-tabler-brand-mastodon',
+  },
+  {
     name: 'X / Twitter',
     url: 'https://x.com/papra_app',
     icon: 'i-tabler-brand-x',
@@ -77,7 +82,7 @@ const { class: className } = Astro.props;
   </div>
 
   <div class="flex items-center gap-4">
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2">
       {
         socials.map(social => (
           <a href={social.url} target="_blank" rel="noopener noreferrer" class=" hover:text-primary transition" aria-label={social.name}>
