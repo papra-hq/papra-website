@@ -1,47 +1,12 @@
 ---
 import { buildLocalizedPath, useI18n } from '../i18n/i18n';
+import { getSocials } from '../socials';
 import { cn } from '../utils/cn';
 import LanguagePicker from './LanguagePicker.astro';
 
 const { t } = useI18n({ locale: Astro.currentLocale });
 
-const socials = [
-  {
-    label: t('footer.social.bluesky'),
-    url: 'https://bsky.app/profile/papra.app',
-    icon: 'i-tabler-brand-bluesky',
-  },
-  {
-    label: t('footer.social.mastodon'),
-    url: 'https://mastodon.social/@papra',
-    icon: 'i-tabler-brand-mastodon',
-  },
-  {
-    label: t('footer.social.x'),
-    url: 'https://x.com/papra_app',
-    icon: 'i-tabler-brand-x',
-  },
-  {
-    label: t('footer.social.github'),
-    url: 'https://github.com/papra-hq/papra',
-    icon: 'i-tabler-brand-github',
-  },
-  {
-    label: t('footer.social.discord'),
-    url: '/discord',
-    icon: 'i-tabler-brand-discord',
-  },
-  {
-    label: t('footer.social.reddit'),
-    url: 'https://www.reddit.com/r/Papra',
-    icon: 'i-tabler-brand-reddit',
-  },
-  {
-    label: t('footer.social.linkedin'),
-    url: 'https://www.linkedin.com/company/papra-hq',
-    icon: 'i-tabler-brand-linkedin',
-  },
-];
+const socials = getSocials({ t });
 
 const sections: {
   title: string;
