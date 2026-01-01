@@ -8,6 +8,7 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 import presetAnimations from 'unocss-preset-animations';
+import { getSocials } from './src/socials';
 
 export default defineConfig({
   presets: [
@@ -101,7 +102,7 @@ export default defineConfig({
       },
     },
   },
-  safelist: ['sm:grid-cols-1', 'sm:grid-cols-2', 'sm:grid-cols-3', 'sm:grid-cols-4', 'sm:grid-cols-5', 'i-tabler-heart-filled'],
+  safelist: ['sm:grid-cols-1', 'sm:grid-cols-2', 'sm:grid-cols-3', 'sm:grid-cols-4', 'sm:grid-cols-5', 'i-tabler-heart-filled', ...getSocials().map(s => s.icon)],
   preflights: [
     {
       getCSS: () => `

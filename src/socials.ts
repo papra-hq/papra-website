@@ -8,8 +8,8 @@ export const DISCORD_INVITE_URL = 'https://papra.app/discord';
 export function getSocials({
   t = useI18n().t,
 }: {
-  t: Translator;
-}) {
+  t?: Translator;
+} = {}) {
   return [
     {
       id: 'github',
