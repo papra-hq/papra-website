@@ -251,6 +251,8 @@ export const translations: Partial<TranslationsDictionary> = {
   'contact.option.bluesky.label': 'Profil Bluesky',
   'contact.option.x.name': 'X / Twitter',
   'contact.option.x.label': 'Profil Papra sur X',
+  'contact.option.reddit.name': 'Reddit',
+  'contact.option.reddit.label': 'Communauté r/papra',
 
   // Blog Page
   'blog.title': 'Blog Papra',

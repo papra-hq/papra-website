@@ -1,5 +1,4 @@
 ---
-import ContactForm from '../../components/ContactForm.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { useI18n } from '../../i18n/i18n';
@@ -44,6 +43,12 @@ const contactOptions = [
     href: 'https://x.com/papra_app',
     icon: 'i-tabler-brand-x',
   },
+  {
+    name: t('contact.option.reddit.name'),
+    label: t('contact.option.reddit.label'),
+    href: 'https://www.reddit.com/r/Papra/',
+    icon: 'i-tabler-brand-reddit',
+  },
 ];
 ---
 
@@ -58,8 +63,7 @@ const contactOptions = [
       </div>
     </div>
 
-    <div class="max-w-5xl mx-auto p-4 flex flex-col md:flex-row gap-6 my-12 flex-1 w-full">
-      <div class="flex flex-col gap-4 md:min-w-350px">
+    <div class="max-w-md mx-auto flex-1 w-full flex flex-col gap-4 px-6 py-16">
         {
           contactOptions.map(option => (
             <a href={option.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 border rounded-lg bg-background p-4 hover:(border-primary) transition">
@@ -77,11 +81,7 @@ const contactOptions = [
             </a>
           ))
         }
-      </div>
 
-      <div class="border rounded-lg bg-background p-6 flex-1">
-        <ContactForm />
-      </div>
     </div>
 
     <Footer class="bg-background" />
