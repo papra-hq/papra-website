@@ -4,96 +4,124 @@ import Header from '../../components/Header.astro';
 import { useI18n } from '../../i18n/i18n';
 import { LOCALES } from '../../i18n/i18n.constants';
 import Layout from '../../layouts/Layout.astro';
+import { DISCORD_INVITE_URL, getSocials, GITHUB_ISSUES_URL } from '../../socials';
 import { cn } from '../../utils/cn';
 
 export async function getStaticPaths() {
-    return LOCALES.map(locale => ({ params: { locale } }));
+  return LOCALES.map(locale => ({ params: { locale } }));
 }
 
 const { t } = useI18n({ locale: Astro.currentLocale });
 
-const contactOptions = [
+const generalCards = [
   {
-    name: t('contact.option.email.name'),
-    label: t('contact.option.email.label'),
-    href: 'mailto:contact@papra.app',
+    title: t('contact.general-inquiries.title'),
+    description: t('contact.general-inquiries.description'),
     icon: 'i-tabler-mail',
+    email: 'contact@papra.app',
   },
   {
-    name: t('contact.option.discord.name'),
-    label: t('contact.option.discord.label'),
-    href: '/discord',
-    icon: 'i-tabler-brand-discord',
+    title: t('contact.partnerships.title'),
+    description: t('contact.partnerships.description'),
+    icon: 'i-tabler-heart-handshake',
+    email: 'partnerships@papra.app',
   },
   {
-    name: t('contact.option.github.name'),
-    label: t('contact.option.github.label'),
-    href: 'https://github.com/papra-hq/papra',
-    icon: 'i-tabler-brand-github',
+    title: t('contact.bug.title'),
+    description: t('contact.bug.description'),
+    icon: 'i-tabler-bug',
+    button: {
+      icon: 'i-tabler-brand-github',
+      label: t('contact.bug.button-label'),
+      url: GITHUB_ISSUES_URL,
+    },
   },
   {
-    name: t('contact.option.bluesky.name'),
-    label: t('contact.option.bluesky.label'),
-    href: 'https://bsky.app/profile/papra.app',
-    icon: 'i-tabler-brand-bluesky',
-  },
-  {
-    name: t('contact.option.mastodon.name'),
-    label: t('contact.option.mastodon.label'),
-    href: 'https://mastodon.social/@papra',
-    icon: 'i-tabler-brand-mastodon',
-  },
-  {
-    name: t('contact.option.x.name'),
-    label: t('contact.option.x.label'),
-    href: 'https://x.com/papra_app',
-    icon: 'i-tabler-brand-x',
-  },
-  {
-    name: t('contact.option.reddit.name'),
-    label: t('contact.option.reddit.label'),
-    href: 'https://www.reddit.com/r/Papra/',
-    icon: 'i-tabler-brand-reddit',
-  },
-  {
-    name: t('contact.option.linkedin.name'),
-    label: t('contact.option.linkedin.label'),
-    href: 'https://www.linkedin.com/company/papra-hq',
-    icon: 'i-tabler-brand-linkedin',
+    title: t('contact.community.title'),
+    description: t('contact.community.description'),
+    icon: 'i-tabler-messages',
+    button: {
+      icon: 'i-tabler-brand-discord',
+      label: t('contact.community.button-label'),
+      url: DISCORD_INVITE_URL,
+    },
   },
 ];
+
+const socials = getSocials({ t });
 ---
 
 <Layout>
   <div class="bg-card flex flex-col w-full min-h-screen">
     <Header />
 
-    <div class="w-full bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] bg-background border-b pt-32 pb-24">
-      <div class="max-w-700px mx-auto p-4">
-        <h1 class="text-3xl mb-2 font-bold">{t('contact.title')}</h1>
-        <p class="text-base mb-2 leading-tight">{t('contact.subtitle')}</p>
+    <div class="w-full bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:48px_48px] bg-background border-b pt-24 md:pt-32 pb-8 md:pb-18">
+      <div class="max-w-700px mx-auto p-6 md:text-center">
+        <h1 class="text-3xl md:text-5xl mb-4 font-bold">{t('contact.title')}</h1>
+        <p class="text-base md:text-xl leading-tight text-muted-foreground text-pretty">{t('contact.subtitle')}</p>
       </div>
     </div>
 
-    <div class="max-w-3xl mx-auto flex-1 w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-24">
+    <div class="max-w-4xl mx-auto px-6 py-8 md:py-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {
-          contactOptions.map(option => (
-            <a href={option.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 border rounded-lg bg-background p-4 hover:(border-primary) transition">
-              <div class="flex items-center justify-center bg-primary/5 rounded-lg size-10">
-                <div class={cn(option.icon, 'size-7 bg-primary')} />
+          generalCards.map(card => (
+            <div class={cn('border border-border rounded-lg p-6 bg-background/50')}>
+              <div class="size-14 flex items-center justify-center bg-primary/10 rounded-xl">
+                <div class={`${card.icon} size-8 text-primary`} aria-hidden="true" />
               </div>
-              <div class="flex-1">
-                <div class="font-semibold text-base lh-tight">{option.name}</div>
-                <div class="text-sm text-muted-foreground lh-tight">{option.label}</div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="i-tabler-external-link size-5 text-muted-foreground" />
-              </div>
-            </a>
+              <h2 class="text-2xl font-semibold mt-4 mb-3">{card.title}</h2>
+              <p class="text-base text-muted-foreground mb-4">{card.description}</p>
+              {card.email
+? (
+                <a
+                  href={`mailto:${card.email}`}
+                  class="text-base font-semibold text-primary hover:underline"
+                >
+                  {card.email}
+                </a>
+              )
+: card.button
+? (
+                <a
+                  href={card.button.url}
+                  class="text-base font-semibold bg-primary rounded-lg py-2 px-4 text-primary-foreground transition hover:bg-primary/80 inline-flex items-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div class={`${card.button.icon} size-6 inline-block mr-2`} aria-hidden="true" />
+                  {card.button.label}
+                </a>
+              )
+: null}
+            </div>
           ))
         }
+      </div>
 
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 border rounded-lg mt-8 p-6 bg-background/50">
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">{t('contact.connect.title')}</h2>
+          <p class="text-base text-muted-foreground">{t('contact.connect.description')}</p>
+        </div>
+
+        <div class="flex items-center gap-4 flex-wrap md:flex-nowrap">
+          {
+            socials.map(social => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                class="size-12 text-primary bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition"
+                title={social.name}
+              >
+                <div class={cn('size-6', social.icon)} aria-hidden="true" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </div>
 
     <Footer class="bg-background" />

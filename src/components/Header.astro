@@ -1,37 +1,12 @@
 ---
 import { config } from '../app.config';
 import { buildLocalizedPath, useI18n } from '../i18n/i18n';
+import { getSocials } from '../socials';
 import { cn } from '../utils/cn';
 
 const { t } = useI18n({ locale: Astro.currentLocale });
 
-const socials = [
-  {
-    name: 'Bluesky',
-    url: 'https://bsky.app/profile/papra.app',
-    icon: 'i-tabler-brand-bluesky',
-  },
-  {
-    name: 'Mastodon',
-    url: 'https://mastodon.social/@papra',
-    icon: 'i-tabler-brand-mastodon',
-  },
-  {
-    name: 'X / Twitter',
-    url: 'https://x.com/papra_app',
-    icon: 'i-tabler-brand-x',
-  },
-  {
-    name: 'GitHub',
-    url: 'https://github.com/papra-hq/papra',
-    icon: 'i-tabler-brand-github',
-  },
-  {
-    name: 'Discord',
-    url: '/discord',
-    icon: 'i-tabler-brand-discord',
-  },
-];
+const socials = getSocials({ t }).filter(social => social.inHeader);
 
 const navigation = [
   {

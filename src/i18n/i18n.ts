@@ -31,7 +31,7 @@ export function getTranslations({ locale }: { locale: string }): TranslationsDic
 
 const { parse } = createBranchlet();
 
-export function useI18n({ locale = DEFAULT_LOCALE }: { locale?: string }) {
+export function useI18n({ locale = DEFAULT_LOCALE }: { locale?: string } = {}) {
   return {
     locale,
     t: <K extends keyof TranslationsDictionary>(key: K, args?: Record<string, string | number>): TranslationsDictionary[K] => {
@@ -46,6 +46,8 @@ export function useI18n({ locale = DEFAULT_LOCALE }: { locale?: string }) {
     },
   };
 }
+
+export type Translator = ReturnType<typeof useI18n>['t'];
 
 export function getPathWithoutLocale(url: URL | string) {
   const pathname = typeof url === 'string' ? url : url.pathname;
