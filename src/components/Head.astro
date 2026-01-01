@@ -145,5 +145,7 @@ const alternateLinks = isMultiLangPage
   <meta name="robots" content="max-image-preview:large" />
   <link rel="alternate" type="application/rss+xml" title="Papra Blog" href={new URL('rss.xml', Astro.site)} />
 
+  <meta name="fediverse:creator" content="@papra@mastodon.social" />
+
   {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </CapoHead>
