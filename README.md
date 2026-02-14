@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository is archived and read-only as the sources have been moved to the main monorepo: [papra-hq/papra](https://github.com/papra-hq/papra/tree/main/apps/website).
+
 <p align="center">
 <picture>
     <source srcset="./.github/icon-dark.png" media="(prefers-color-scheme: light)">
